@@ -9,7 +9,16 @@ interface AnchorProps extends JSX.AnchorHTMLAttributes<HTMLAnchorElement> {
 	inactiveClass?: string;
 	end?: boolean;
 }
-
+/**
+ * A link that looks like a link
+ * @param props Accepts standard anchor props and optional custom props.
+ * @param props.href Required! Can pass local/relative routes or whole domains.
+ * @param props.color Optional, defaults to "default". Pass "ara" | "ene" | "izi" for themed colours.
+ * @param props.activeClass Optional, override how the link looks when the link points to the current page.
+ * @param props.inactiveClass Optional, override how the link looks when the link points elsewhere.
+ * @param props.end Optional, a Solid utility for helping to figure out if activeClass or inactiveClass should be used.
+ * @param props.class Optional, goes into a cn function so you can override default styles as needed.
+ */
 export function Anchor(props: AnchorProps) {
 	const [l, rest] = splitProps(props, [
 		"color",

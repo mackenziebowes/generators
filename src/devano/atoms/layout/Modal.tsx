@@ -6,7 +6,7 @@ interface ModalProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	when: boolean;
 	close: Function;
 }
-export default function Modal(props: ModalProps) {
+export function Modal(props: ModalProps) {
 	const [l, rest] = splitProps(props, ["when", "children", "close"]);
 
 	return (

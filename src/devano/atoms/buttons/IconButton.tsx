@@ -1,4 +1,3 @@
-
 import { JSX, splitProps } from "solid-js";
 import { cn } from "~/devano/utils/cn";
 
@@ -7,7 +6,13 @@ interface IconButtonProps extends JSX.HTMLAttributes<HTMLButtonElement> {
 	color?: "default" | "ara" | "ene" | "izi";
 }
 
-export default function IconButton(props: IconButtonProps) {
+/**
+ * A button for using with icons - uniquely padded and square.
+ * @param props.outline Optional boolean - want it outlined or not?
+ * @param props.color Optional string - defaults to "default". Can pass "ara", "ene", or "izi" for prebuilt themes.
+ * @param props.class Optional, override default styling.
+ */
+export function IconButton(props: IconButtonProps) {
 	const [l, rest] = splitProps(props, [
 		"outline",
 		"color",

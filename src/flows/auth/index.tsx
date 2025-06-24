@@ -1,10 +1,7 @@
-import { createSignal } from "solid-js";
 import { AuthViewProvider } from "./Context";
 import AuthViewContainer from "./Container";
 import { useAuthPortal } from "~/global/individual/Auth";
-import { Portal } from "solid-js/web";
-import { Show } from "solid-js";
-import Modal from "~/devano/atoms/layout/Modal";
+import { Modal } from "~/devano/atoms";
 
 const AuthPortal = () => {
 	const { state } = useAuthPortal();

@@ -1,8 +1,8 @@
 import { JSX, Match, splitProps, Switch, createSignal } from "solid-js";
 import { cn } from "~/devano/utils/cn";
-import IconButton from "~/devano/atoms/buttons/IconButton";
-import EyeOpen from "~/devano/atoms/icons/EyeOpen";
-import EyeClosed from "~/devano/atoms/icons/EyeClosed";
+import { IconButton } from "~/devano/atoms";
+import { EyeOpen } from "~/devano/atoms/icons";
+import { EyeClosed } from "~/devano/atoms/icons";
 import type { Accessor, Setter } from "solid-js";
 import { ZodType, ZodError } from "zod";
 

@@ -3,7 +3,7 @@ import { cn } from "~/devano/utils/cn";
 
 interface PageInnerProps extends JSX.HTMLAttributes<HTMLDivElement> {}
 
-export default function PageInner(props: PageInnerProps) {
+export function PageInner(props: PageInnerProps) {
 	const [l, rest] = splitProps(props, ["class"]);
 
 	const innerCn = cn([

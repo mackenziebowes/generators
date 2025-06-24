@@ -4,8 +4,6 @@ import {
 	createSignal,
 	JSX,
 	ParentComponent,
-	onMount,
-	createEffect,
 } from "solid-js";
 import { cn } from "~/devano/utils/cn";
 

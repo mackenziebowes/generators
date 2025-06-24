@@ -6,6 +6,14 @@ interface ButtonProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: "default" | "ara" | "ene" | "izi";
 	label?: string;
 }
+/**
+ * A button that looks like a button.
+ * @param props Accepts standard button props and three optional custom props.
+ * @param props.outline Boolean - make it outline or not
+ * @param props.color Optional, defaults to "default". Pass "ara" | "ene" | "izi" for themed colours.
+ * @param props.label Optional, use this to pass the text inside the button as a prop rather than a child, mostly for aesthetic coding purposes.
+ * @param props.class Optional, goes into a cn function so you can override default styles as needed.
+ */
 export function Button(props: ButtonProps) {
 	const [l, rest] = splitProps(props, [
 		"outline",
@@ -20,9 +28,9 @@ export function Button(props: ButtonProps) {
 	let className = cn([
 		"select-none px-4 py-1 font-semibold rounded-md border-[2px] hover:cursor-pointer focus:outline-[1px] focus:outline-(--c-a-e)",
 		{
-			"border-(--fg-e) text-(--fg-e) hover:text-(--fg-i) hover:border-(--fg-i)":
+			"border-(--fg-e) text-(--fg-e) hover:text-(--fg-o) hover:border-(--fg-o)":
 				color == "default" && l?.outline == true,
-			"border-(--fg-i) bg-(--fg-i) text-(--bg-e) hover:bg-(--fg-o) hover:text-(--bg-i) hover:border-(--fg-o)":
+			"border-(--fg-e) bg-(--fg-e) text-(--bg-e) hover:bg-(--fg-o) hover:text-(--bg-o) hover:border-(--fg-o)":
 				color == "default" && l?.outline == undefined,
 			"border-(--c-a-e) text-(--c-a-e) hover:text-(--c-a-i) hover:border-(--c-a-i)":
 				color == "ara" && l?.outline == true,

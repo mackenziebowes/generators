@@ -1,8 +1,7 @@
-
 import { JSX, splitProps } from "solid-js";
 import { cn } from "~/devano/utils/cn";
 
-export default function SVGArt(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
+export function EyeClosed(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	const [l, rest] = splitProps(props, ["width", "height", "class"]);
 	return (
 		<svg

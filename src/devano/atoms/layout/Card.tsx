@@ -7,7 +7,7 @@ export function Card(props: CardProps) {
 	let [l, rest] = splitProps(props, ["class", "children"]);
 
 	let cardCN = cn([
-		"flex flex-col w-[35ch] border-[2px] border-(--gh-e) px-[24px] py-[12px] pb-[24px] rounded-[12px] gap-[24px]",
+		"flex flex-col min-w-[35ch] border-[4px] border-(--c-a-e) px-[24px] py-[12px] pb-[24px] rounded-[6px] gap-[24px]",
 		l?.class,
 	]);
 

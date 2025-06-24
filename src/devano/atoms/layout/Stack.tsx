@@ -10,7 +10,7 @@ interface StackProps extends JSX.HTMLAttributes<HTMLDivElement> {
  * 	@prop class standard classnames, use to extend or overwrite defaults.
  *	@prop direction "row" | "col" -> makes a row or column
  */
-export default function Stack(props: StackProps) {
+export function Stack(props: StackProps) {
 	const [l, rest] = splitProps(props, ["children", "class", "direction"]);
 
 	let className = cn([

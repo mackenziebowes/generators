@@ -5,6 +5,12 @@ interface AnchorProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: "default" | "ara" | "ene" | "izi";
 }
 
+/**
+ * A button that looks like a link.
+ * @param props Accepts standard button props and three optional custom props.
+ * @param props.color Optional, defaults to "default". Pass "ara" | "ene" | "izi" for themed colours.
+ * @param props.class Optional, goes into a cn function so you can override default styles as needed.
+ */
 export function AnchorButton(props: AnchorProps) {
 	const [l, rest] = splitProps(props, ["color", "class", "children"]);
 

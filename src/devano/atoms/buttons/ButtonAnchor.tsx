@@ -9,6 +9,18 @@ interface AnchorProps extends JSX.AnchorHTMLAttributes<HTMLAnchorElement> {
 	end?: boolean;
 	disabled?: boolean;
 }
+/**
+ *
+ * An anchor/link that looks like a button.
+ * @param props Accepts standard Anchor props, plus custom ones:
+ * @param props.href Required! Pass the whole domain.
+ * @param props.outline Boolean - make it outline or not
+ * @param props.color Optional, defaults to "default". Pass "ara" | "ene" | "izi" for themed colours.
+ * @param props.label Optional, use this to pass the text inside the button as a prop rather than a child, mostly for aesthetic coding purposes.
+ * @param props.end Meant to be used with SolidStart's router - can change the styling if it matches the current page.
+ * @param props.disabled Links traditionally can't be disabled, but this one can be.
+ * @param props.class Optional, goes into a cn function so you can override default styles as needed.
+ * */
 export function ButtonAnchor(props: AnchorProps) {
 	const [l, rest] = splitProps(props, [
 		"outline",
