@@ -28,9 +28,14 @@ timelogs.features.components.badge = [
 
 timelogs.features.components.breadcrumbs = [
     {
-        comment = "initial impl",
-        start = "",
-        end = "",
+        comment = "basic impl",
+        start = "2025-06-26 14:39:16",
+        end = "2025-06-26 14:56:00",
+    },
+    {
+        comment = "atomic breadcrumbs",
+        start = "2025-06-26 14:56:19",
+        end = ""
     }
 ]
 
