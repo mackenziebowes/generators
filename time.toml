@@ -33,9 +33,24 @@ timelogs.features.components.breadcrumbs = [
         end = "2025-06-26 14:56:00",
     },
     {
-        comment = "atomic breadcrumbs",
+        comment = "atomic breadcrumbs start",
         start = "2025-06-26 14:56:19",
-        end = ""
+        end = "2025-06-26 15:05:01"
+    }, 
+    {
+        comment = "mandated dynamic posture",
+        start = "2025-06-26 15:06:23",
+        end = "2025-06-26 15:25:41"
+    },
+    {
+        comment = "continued atomic breadcrumbs",
+        start = "2025-06-26 15:25:59",
+        end = "2025-06-26 16:01:31"
+    },
+    {
+        comment = "atomic breadcrumb done, testing",
+        start = "2025-06-26 16:01:48",
+        end = "2025-06-26 16:19:09"
     }
 ]
 

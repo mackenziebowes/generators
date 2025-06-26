@@ -12,6 +12,7 @@ export default function KitchenSink() {
 					<Atoms.Card
 						title="Accordion"
 						class="w-full"
+						id="accordion"
 					>
 						<Atoms.Heading as="h4">Single</Atoms.Heading>
 						<Comp.Accordion
@@ -59,6 +60,7 @@ export default function KitchenSink() {
 					<Atoms.Card
 						title="Avatar"
 						class="w-full"
+						id="avatar"
 					>
 						<p>Basic Avatar</p>
 						<Comp.Avatar size={48} />
@@ -76,6 +78,7 @@ export default function KitchenSink() {
 					<Atoms.Card
 						title="Badge"
 						class="w-full"
+						id="badge"
 					>
 						<p>Badges have two axes: Semantic + Priority</p>
 						<p>Medium Priority (default):</p>
@@ -152,6 +155,49 @@ export default function KitchenSink() {
 								label="Info"
 							/>
 						</div>
+					</Atoms.Card>
+					<Atoms.Card
+						title="Breadcrumbs"
+						class="w-full"
+						id="breadcrumbs"
+					>
+						<p>
+							The dynamic Breadcrumb component prints the current route into
+							links:
+						</p>
+						<Comp.Breadcrumb />
+						<p>But you can also make a custom Breadcrumb do whatever: </p>
+						<Atoms.BreadcrumbList>
+							<Atoms.BreadcrumbItem>
+								<Atoms.Anchor href="https://github.com/mackenziebowes">
+									<Comp.Badge
+										type="info"
+										priority="high"
+										label="mackenzie bowes"
+									/>
+								</Atoms.Anchor>
+							</Atoms.BreadcrumbItem>
+							<Atoms.BreadcrumbSeparator symbol={">>"} />
+							<Atoms.BreadcrumbItem>
+								<Atoms.Anchor href="https://github.com/mackenziebowes/deko">
+									<Comp.Badge
+										type="info"
+										priority="low"
+										label="deko"
+									/>
+								</Atoms.Anchor>
+							</Atoms.BreadcrumbItem>
+							<Atoms.BreadcrumbSeparator symbol={">>"} />
+							<Atoms.BreadcrumbItem>
+								<Atoms.Anchor href="https://github.com/mackenziebowes/deko-client-solid">
+									<Comp.Badge
+										type="info"
+										priority="med"
+										label="client solid"
+									/>
+								</Atoms.Anchor>
+							</Atoms.BreadcrumbItem>
+						</Atoms.BreadcrumbList>
 					</Atoms.Card>
 				</Atoms.Stack>
 			</Atoms.PageInner>

@@ -8,6 +8,11 @@ import {
 import { KeyIndicator } from "./KeyIndicator";
 import { ProgressBar } from "./Progress/Bar";
 import { ProgressDots } from "./Progress/Dots";
+import {
+	BreadcrumbItem,
+	BreadcrumbList,
+	BreadcrumbSeparator,
+} from "./Breadcrumbs";
 
 export {
 	ToastProvider,
@@ -19,4 +24,7 @@ export {
 	KeyIndicator,
 	ProgressBar,
 	ProgressDots,
+	BreadcrumbItem,
+	BreadcrumbList,
+	BreadcrumbSeparator,
 };

@@ -22,6 +22,9 @@ import {
 	KeyIndicator,
 	ProgressBar,
 	ProgressDots,
+	BreadcrumbItem,
+	BreadcrumbList,
+	BreadcrumbSeparator,
 } from "./feedback";
 import { CheckboxInput, PasswordInput, TextInput } from "./inputs";
 import { Card, Heading, Modal, Page, PageInner, Stack } from "./layout";
@@ -45,6 +48,9 @@ export {
 	KeyIndicator,
 	ProgressBar,
 	ProgressDots,
+	BreadcrumbItem,
+	BreadcrumbList,
+	BreadcrumbSeparator,
 	CheckboxInput,
 	PasswordInput,
 	TextInput,
