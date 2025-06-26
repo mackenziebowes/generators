@@ -3,6 +3,11 @@ timelogs.housekeeping.changelog = [
         start = "2025-06-26 14:18:05",
         end = "2025-06-26 14:38:16",
         commit = "0.0.2"
+    }, 
+    {
+        start = "2025-06-26 16:21:47",
+        end = "2025-06-26 16:22:40",
+        commit = "0.0.3"
     }
 ]
 

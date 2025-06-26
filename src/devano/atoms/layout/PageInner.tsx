@@ -18,9 +18,7 @@ export function PageInner(props: PageInnerProps) {
 		>
 			<div class="flex-none w-full px-[24px] py-[12px]">{/* <TopNav /> */}</div>
 			<div class="flex-1 overflow-y-scroll pb-[24px]">{props.children}</div>
-			<div class="flex items-center justify-center flex-none w-full py-[12px]">
-				{/* <FooterNav /> */}
-			</div>
+			<div class="flex items-center justify-center flex-none w-full py-[12px]"></div>
 		</div>
 	);
 }
