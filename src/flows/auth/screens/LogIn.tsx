@@ -1,9 +1,6 @@
-import { Button } from "~/devano/atoms/buttons/Button";
-import { TextInput } from "~/devano/atoms/inputs/TextInput";
-import { PasswordInput } from "~/devano/atoms/inputs/PasswordInput";
 import { useAuthView, AuthPages } from "../Context";
 import AuthCard from "../components/AuthCard";
-import Stack from "~/devano/atoms/layout/Stack";
+import { Button, TextInput, PasswordInput, Stack } from "~/devano/atoms";
 import { auth } from "../api";
 import { z } from "zod";
 

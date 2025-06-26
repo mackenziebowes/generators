@@ -1,0 +1,36 @@
+timelogs.housekeeping.changelog = [
+    {
+        start = "2025-06-26 14:18:05",
+        end = "2025-06-26 14:38:16",
+        commit = "0.0.2"
+    }
+]
+
+timelogs.features.components.avatar = [
+    {
+        start = "2025-06-26 11:08:17",
+        end = "2025-06-26 12:47:34",
+        comment = "initial impl"
+    }, {
+        start = "2025-06-26 12:47:42",
+        end = "2025-06-26 12:58:27",
+        comment = "gave up on testing"
+    }
+];
+
+timelogs.features.components.badge = [
+    {
+        comment = "initial impl",
+        start = "2025-06-26 12:59:49",
+        end = "2025-06-26 13:45:22"
+    }
+];
+
+timelogs.features.components.breadcrumbs = [
+    {
+        comment = "initial impl",
+        start = "",
+        end = "",
+    }
+]
+

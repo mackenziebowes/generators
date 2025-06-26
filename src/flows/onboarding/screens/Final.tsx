@@ -1,11 +1,13 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { Card } from "~/devano/atoms/layout/Card";
-import { Heading } from "~/devano/atoms/layout/Heading";
-import { ButtonAnchor } from "~/devano/atoms/buttons/ButtonAnchor";
-import { ErrorMessage } from "~/devano/atoms/feedback/ErrorMessage";
+import {
+	Stack,
+	Card,
+	Heading,
+	CheckboxInput,
+	ButtonAnchor,
+	ErrorMessage,
+} from "~/devano/atoms";
 import { useOnboarding } from "../Context";
 import { createSignal, createEffect } from "solid-js";
-import { CheckboxInput } from "~/devano/atoms/inputs/CheckboxInput";
 
 export default function Final() {
 	const { state } = useOnboarding();

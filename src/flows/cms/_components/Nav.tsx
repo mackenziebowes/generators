@@ -1,8 +1,5 @@
 import { useCMSAdmin, CMSAdminViews } from "../Context";
-import { Anchor } from "~/devano/atoms/buttons/Anchor";
-import { FlexSeparator } from "~/devano/atoms/decorators/FlexSeparator";
-import { Heading } from "~/devano/atoms/layout/Heading";
-import Stack from "~/devano/atoms/layout/Stack";
+import { Anchor, FlexSeparator, Heading, Stack } from "~/devano/atoms";
 
 /**
  * I have dreams for this component - big dreams, I say!

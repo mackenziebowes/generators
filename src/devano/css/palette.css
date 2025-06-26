@@ -1,20 +1,66 @@
-:root {
-	--color0: #252a37;
-	--color1: #1989e1;
-	--color2: #50be6c;
-	--color3: #d99bd0;
-	--color4: #538cd4;
-	--color5: #88749e;
-	--color6: #ff922e;
-	--color7: #bdcadd;
-	--color8: #5d5c55;
-	--color9: #3894dc;
-	--color10: #64b49b;
-	--color11: #efbbe9;
-	--color12: #89baf7;
-	--color13: #a199c7;
-	--color14: #ffac60;
-	--color15: #fbfbfb;
+
+    
+
+
+    /* 
+    -- Generated Note --
+    [Iroshiki]
+    This theme was generated with Iroshiki.
+    Read More: https://github.com/mackenziebowes/iroshiki
+
+    [Ansi Theme]
+    This is an Ansi Theme, a simplified and minimal 16-byte-index based array of colours inspired by early computer graphics technology like ANSI escape sequences for terminals, MUDs, and pixel art.
+    ANSI themes are composed of 8 primary colors, and their indexes are Semantic. 
+    Typically, there is a neutral Surface (--color0) and a neutral Marker (--color7).
+    The intervening colors, (--color1, --color2, etc) are, historically, Red, Green, Yellow, Blue, 'Magenta', and 'Cyan' respectively, combining the two primary colour sets.
+    These indexes have stable semantic associations as computers developed - use Red for Errors, Green for Success, Yellow for Warnings, and Blue for optional Information.
+    Indexes --color5 and --color6 are non semantic, often used for non-semantic elevation of outputs. 
+    Like most Iroshiki themes, there are 'bright' versions in the upper ANSI register (--color8 - --color15) that are usually lighter and desaturated.
+    Tailwind and Semantic overrides are filled with incremental variations (an Indexed Colour Ramp).
+    Low values are brighter.
+
+    [Usage]
+    Ansi Palettes tend to be high contrast. 
+    Use --color0, --surface-n or any tailwind neutral above 500, eg:  --gray-700, --stone-800, --slate-900 etc. aliases 
+    for your multi-level/mildly contrasting backgrounds colors, they're all built off --color0.
+    Use --color15, --color8, --marking-n or any tailwind netural below 300, eg: --slate-200, --stone-300, --zinc-50 etc. aliases for your text. 
+    Lower tailwind numbers are closer to white. 
+
+    Use --color1 or the --error-n alias for errors. These also index to red tailwind colours, red/pink/rose etc.
+    Use --color2 or the --succes-n alias for success. These also index to green tailwind colours, emerald/green etc.
+    Use --color3 or the --warn-n alias for warnings. These also index to the yellow/orange tailwind colours.
+    Use --color4 or the --info-n alias for extra information like tips, notes, tutorials, etc. These also index to the blue tailwind colours.
+    You can do whatever you want with indices 5 and 6. We provided --focus-n and --outline-n aliases for them, and they map to tailwind fuschia/purple and teal/cyan colors respectively.
+
+    Use the upper register for hover/focus states if not using tailwind.
+
+    [Swapping]
+    Ansi Palettes are designed to be interchangeable, but sometimes reindex the semantic colours for flavour, eg --color1 is not red, but green, pink, or orange.
+    This is part of the fun of the system - non-standard indexes create non-standard experiences. 
+
+    Go with the flow <3
+    -- End Note --
+    */
+    
+
+
+    :root {
+	--color0: #252A37;
+	--color1: #1989E1;
+	--color2: #50BE6C;
+	--color3: #D99BD0;
+	--color4: #538CD4;
+	--color5: #88749E;
+	--color6: #FF922E;
+	--color7: #E4E9F1;
+	--color8: #5D5C55;
+	--color9: #3894DC;
+	--color10: #64B49B;
+	--color11: #EFBBE9;
+	--color12: #89BAF7;
+	--color13: #A199C7;
+	--color14: #FFAC60;
+	--color15: #FBFBFB;
 	--surface-100: #4a546e;
 	--surface-200: #454e67;
 	--surface-300: #404960;
@@ -209,291 +255,323 @@
 	--c-i-a: var(--color6-600);
 	--c-i-e: var(--color6-500);
 	--c-i-i: var(--color6-400);
-	/* -- Tailwind Override -- */
+/* -- Tailwind Override -- */
 
-	/* -- slate Override -- */
-	--color-slate-50: #252a37;
-	--color-slate-100: #373c48;
-	--color-slate-200: #4b4e5a;
-	--color-slate-300: #5f626c;
-	--color-slate-400: #73767f;
-	--color-slate-500: #898b93;
-	--color-slate-600: #9ea0a7;
-	--color-slate-700: #b5b6bb;
-	--color-slate-800: #cccdd0;
-	--color-slate-900: #e3e4e5;
-	--color-slate-950: #fbfbfb;
+/* -- slate Override -- */
+--color-slate-50: #252a37;
+--color-slate-100: #373c48;
+--color-slate-200: #4b4e5a;
+--color-slate-300: #5f626c;
+--color-slate-400: #73767f;
+--color-slate-500: #898b93;
+--color-slate-600: #9ea0a7;
+--color-slate-700: #b5b6bb;
+--color-slate-800: #cccdd0;
+--color-slate-900: #e3e4e5;
+--color-slate-950: #fbfbfb;
 
-	/* -- gray Override -- */
-	--color-gray-50: #252a37;
-	--color-gray-100: #373c48;
-	--color-gray-200: #4b4e5a;
-	--color-gray-300: #5f626c;
-	--color-gray-400: #73767f;
-	--color-gray-500: #898b93;
-	--color-gray-600: #9ea0a7;
-	--color-gray-700: #b5b6bb;
-	--color-gray-800: #cccdd0;
-	--color-gray-900: #e3e4e5;
-	--color-gray-950: #fbfbfb;
 
-	/* -- zinc Override -- */
-	--color-zinc-50: #252a37;
-	--color-zinc-100: #373c48;
-	--color-zinc-200: #4b4e5a;
-	--color-zinc-300: #5f626c;
-	--color-zinc-400: #73767f;
-	--color-zinc-500: #898b93;
-	--color-zinc-600: #9ea0a7;
-	--color-zinc-700: #b5b6bb;
-	--color-zinc-800: #cccdd0;
-	--color-zinc-900: #e3e4e5;
-	--color-zinc-950: #fbfbfb;
+/* -- gray Override -- */
+--color-gray-50: #252a37;
+--color-gray-100: #373c48;
+--color-gray-200: #4b4e5a;
+--color-gray-300: #5f626c;
+--color-gray-400: #73767f;
+--color-gray-500: #898b93;
+--color-gray-600: #9ea0a7;
+--color-gray-700: #b5b6bb;
+--color-gray-800: #cccdd0;
+--color-gray-900: #e3e4e5;
+--color-gray-950: #fbfbfb;
 
-	/* -- neutral Override -- */
-	--color-neutral-50: #252a37;
-	--color-neutral-100: #373c48;
-	--color-neutral-200: #4b4e5a;
-	--color-neutral-300: #5f626c;
-	--color-neutral-400: #73767f;
-	--color-neutral-500: #898b93;
-	--color-neutral-600: #9ea0a7;
-	--color-neutral-700: #b5b6bb;
-	--color-neutral-800: #cccdd0;
-	--color-neutral-900: #e3e4e5;
-	--color-neutral-950: #fbfbfb;
 
-	/* -- stone Override -- */
-	--color-stone-50: #252a37;
-	--color-stone-100: #373c48;
-	--color-stone-200: #4b4e5a;
-	--color-stone-300: #5f626c;
-	--color-stone-400: #73767f;
-	--color-stone-500: #898b93;
-	--color-stone-600: #9ea0a7;
-	--color-stone-700: #b5b6bb;
-	--color-stone-800: #cccdd0;
-	--color-stone-900: #e3e4e5;
-	--color-stone-950: #fbfbfb;
+/* -- zinc Override -- */
+--color-zinc-50: #252a37;
+--color-zinc-100: #373c48;
+--color-zinc-200: #4b4e5a;
+--color-zinc-300: #5f626c;
+--color-zinc-400: #73767f;
+--color-zinc-500: #898b93;
+--color-zinc-600: #9ea0a7;
+--color-zinc-700: #b5b6bb;
+--color-zinc-800: #cccdd0;
+--color-zinc-900: #e3e4e5;
+--color-zinc-950: #fbfbfb;
 
-	/* -- red Override -- */
-	--color-red-50: #f1f2f4;
-	--color-red-100: #cedaf0;
-	--color-red-200: #a9c2ec;
-	--color-red-300: #81abe8;
-	--color-red-400: #4d95e4;
-	--color-red-500: #1a7ece;
-	--color-red-600: #1a65a5;
-	--color-red-700: #184e7e;
-	--color-red-800: #14385a;
-	--color-red-900: #0e2337;
-	--color-red-950: #010e18;
 
-	/* -- orange Override -- */
-	--color-orange-50: #f1f2f4;
-	--color-orange-100: #cedaf0;
-	--color-orange-200: #a9c2ec;
-	--color-orange-300: #81abe8;
-	--color-orange-400: #4d95e4;
-	--color-orange-500: #1a7ece;
-	--color-orange-600: #1a65a5;
-	--color-orange-700: #184e7e;
-	--color-orange-800: #14385a;
-	--color-orange-900: #0e2337;
-	--color-orange-950: #010e18;
+/* -- neutral Override -- */
+--color-neutral-50: #252a37;
+--color-neutral-100: #373c48;
+--color-neutral-200: #4b4e5a;
+--color-neutral-300: #5f626c;
+--color-neutral-400: #73767f;
+--color-neutral-500: #898b93;
+--color-neutral-600: #9ea0a7;
+--color-neutral-700: #b5b6bb;
+--color-neutral-800: #cccdd0;
+--color-neutral-900: #e3e4e5;
+--color-neutral-950: #fbfbfb;
 
-	/* -- pink Override -- */
-	--color-pink-50: #f1f2f4;
-	--color-pink-100: #cedaf0;
-	--color-pink-200: #a9c2ec;
-	--color-pink-300: #81abe8;
-	--color-pink-400: #4d95e4;
-	--color-pink-500: #1a7ece;
-	--color-pink-600: #1a65a5;
-	--color-pink-700: #184e7e;
-	--color-pink-800: #14385a;
-	--color-pink-900: #0e2337;
-	--color-pink-950: #010e18;
 
-	/* -- rose Override -- */
-	--color-rose-50: #f1f2f4;
-	--color-rose-100: #cedaf0;
-	--color-rose-200: #a9c2ec;
-	--color-rose-300: #81abe8;
-	--color-rose-400: #4d95e4;
-	--color-rose-500: #1a7ece;
-	--color-rose-600: #1a65a5;
-	--color-rose-700: #184e7e;
-	--color-rose-800: #14385a;
-	--color-rose-900: #0e2337;
-	--color-rose-950: #010e18;
+/* -- stone Override -- */
+--color-stone-50: #252a37;
+--color-stone-100: #373c48;
+--color-stone-200: #4b4e5a;
+--color-stone-300: #5f626c;
+--color-stone-400: #73767f;
+--color-stone-500: #898b93;
+--color-stone-600: #9ea0a7;
+--color-stone-700: #b5b6bb;
+--color-stone-800: #cccdd0;
+--color-stone-900: #e3e4e5;
+--color-stone-950: #fbfbfb;
 
-	/* -- lime Override -- */
-	--color-lime-50: #f1f4f1;
-	--color-lime-100: #d0e9d3;
-	--color-lime-200: #afddb6;
-	--color-lime-300: #8dd198;
-	--color-lime-400: #68c57c;
-	--color-lime-500: #49ae63;
-	--color-lime-600: #3a8d50;
-	--color-lime-700: #2c6d3d;
-	--color-lime-800: #1f4e2c;
-	--color-lime-900: #12321b;
-	--color-lime-950: #011807;
+/* -- red Override -- */
+--color-red-50: #f1f2f4;
+--color-red-100: #c9dff1;
+--color-red-200: #a1cbee;
+--color-red-300: #7ab6ea;
+--color-red-400: #50a0e6;
+--color-red-500: #1989e1;
+--color-red-600: #076eb3;
+--color-red-700: #005588;
+--color-red-800: #003c5f;
+--color-red-900: #00243a;
+--color-red-950: #010e18;
 
-	/* -- green Override -- */
-	--color-green-50: #f1f4f1;
-	--color-green-100: #d0e9d3;
-	--color-green-200: #afddb6;
-	--color-green-300: #8dd198;
-	--color-green-400: #68c57c;
-	--color-green-500: #49ae63;
-	--color-green-600: #3a8d50;
-	--color-green-700: #2c6d3d;
-	--color-green-800: #1f4e2c;
-	--color-green-900: #12321b;
-	--color-green-950: #011807;
 
-	/* -- emerald Override -- */
-	--color-emerald-50: #f1f4f1;
-	--color-emerald-100: #d0e9d3;
-	--color-emerald-200: #afddb6;
-	--color-emerald-300: #8dd198;
-	--color-emerald-400: #68c57c;
-	--color-emerald-500: #49ae63;
-	--color-emerald-600: #3a8d50;
-	--color-emerald-700: #2c6d3d;
-	--color-emerald-800: #1f4e2c;
-	--color-emerald-900: #12321b;
-	--color-emerald-950: #011807;
+/* -- orange Override -- */
+--color-orange-50: #f1f2f4;
+--color-orange-100: #c9dff1;
+--color-orange-200: #a1cbee;
+--color-orange-300: #7ab6ea;
+--color-orange-400: #50a0e6;
+--color-orange-500: #1989e1;
+--color-orange-600: #076eb3;
+--color-orange-700: #005588;
+--color-orange-800: #003c5f;
+--color-orange-900: #00243a;
+--color-orange-950: #010e18;
 
-	/* -- amber Override -- */
-	--color-amber-50: #f4f1f3;
-	--color-amber-100: #efdeec;
-	--color-amber-200: #e9cbe4;
-	--color-amber-300: #e3b8dc;
-	--color-amber-400: #dda5d4;
-	--color-amber-500: #c78dbe;
-	--color-amber-600: #9f6f98;
-	--color-amber-700: #7a5274;
-	--color-amber-800: #563852;
-	--color-amber-900: #351e32;
-	--color-amber-950: #180115;
 
-	/* -- yellow Override -- */
-	--color-yellow-50: #f4f1f3;
-	--color-yellow-100: #efdeec;
-	--color-yellow-200: #e9cbe4;
-	--color-yellow-300: #e3b8dc;
-	--color-yellow-400: #dda5d4;
-	--color-yellow-500: #c78dbe;
-	--color-yellow-600: #9f6f98;
-	--color-yellow-700: #7a5274;
-	--color-yellow-800: #563852;
-	--color-yellow-900: #351e32;
-	--color-yellow-950: #180115;
+/* -- pink Override -- */
+--color-pink-50: #f1f2f4;
+--color-pink-100: #c9dff1;
+--color-pink-200: #a1cbee;
+--color-pink-300: #7ab6ea;
+--color-pink-400: #50a0e6;
+--color-pink-500: #1989e1;
+--color-pink-600: #076eb3;
+--color-pink-700: #005588;
+--color-pink-800: #003c5f;
+--color-pink-900: #00243a;
+--color-pink-950: #010e18;
 
-	/* -- blue Override -- */
-	--color-blue-50: #f1f2f4;
-	--color-blue-100: #d2dbed;
-	--color-blue-200: #b2c4e6;
-	--color-blue-300: #90addf;
-	--color-blue-400: #6b98d8;
-	--color-blue-500: #4c80c2;
-	--color-blue-600: #3d679c;
-	--color-blue-700: #2e4f78;
-	--color-blue-800: #203855;
-	--color-blue-900: #132235;
-	--color-blue-950: #010b18;
 
-	/* -- sky Override -- */
-	--color-sky-50: #f1f2f4;
-	--color-sky-100: #d2dbed;
-	--color-sky-200: #b2c4e6;
-	--color-sky-300: #90addf;
-	--color-sky-400: #6b98d8;
-	--color-sky-500: #4c80c2;
-	--color-sky-600: #3d679c;
-	--color-sky-700: #2e4f78;
-	--color-sky-800: #203855;
-	--color-sky-900: #132235;
-	--color-sky-950: #010b18;
+/* -- rose Override -- */
+--color-rose-50: #f1f2f4;
+--color-rose-100: #c9dff1;
+--color-rose-200: #a1cbee;
+--color-rose-300: #7ab6ea;
+--color-rose-400: #50a0e6;
+--color-rose-500: #1989e1;
+--color-rose-600: #076eb3;
+--color-rose-700: #005588;
+--color-rose-800: #003c5f;
+--color-rose-900: #00243a;
+--color-rose-950: #010e18;
 
-	/* -- indigo Override -- */
-	--color-indigo-50: #f1f2f4;
-	--color-indigo-100: #d2dbed;
-	--color-indigo-200: #b2c4e6;
-	--color-indigo-300: #90addf;
-	--color-indigo-400: #6b98d8;
-	--color-indigo-500: #4c80c2;
-	--color-indigo-600: #3d679c;
-	--color-indigo-700: #2e4f78;
-	--color-indigo-800: #203855;
-	--color-indigo-900: #132235;
-	--color-indigo-950: #010b18;
+/* -- lime Override -- */
+--color-lime-50: #f1f4f1;
+--color-lime-100: #d2ead8;
+--color-lime-200: #b4dfbe;
+--color-lime-300: #95d5a4;
+--color-lime-400: #75ca88;
+--color-lime-500: #50be6c;
+--color-lime-600: #3d9956;
+--color-lime-700: #2b7640;
+--color-lime-800: #1a542c;
+--color-lime-900: #0b3518;
+--color-lime-950: #011807;
 
-	/* -- violet Override -- */
-	--color-violet-50: #f2f1f4;
-	--color-violet-100: #dad4e0;
-	--color-violet-200: #c3b8cd;
-	--color-violet-300: #ab9dbb;
-	--color-violet-400: #9482a8;
-	--color-violet-500: #7d6a92;
-	--color-violet-600: #645477;
-	--color-violet-700: #4c405d;
-	--color-violet-800: #362c44;
-	--color-violet-900: #211a2d;
-	--color-violet-950: #0c0118;
 
-	/* -- purple Override -- */
-	--color-purple-50: #f2f1f4;
-	--color-purple-100: #dad4e0;
-	--color-purple-200: #c3b8cd;
-	--color-purple-300: #ab9dbb;
-	--color-purple-400: #9482a8;
-	--color-purple-500: #7d6a92;
-	--color-purple-600: #645477;
-	--color-purple-700: #4c405d;
-	--color-purple-800: #362c44;
-	--color-purple-900: #211a2d;
-	--color-purple-950: #0c0118;
+/* -- green Override -- */
+--color-green-50: #f1f4f1;
+--color-green-100: #d2ead8;
+--color-green-200: #b4dfbe;
+--color-green-300: #95d5a4;
+--color-green-400: #75ca88;
+--color-green-500: #50be6c;
+--color-green-600: #3d9956;
+--color-green-700: #2b7640;
+--color-green-800: #1a542c;
+--color-green-900: #0b3518;
+--color-green-950: #011807;
 
-	/* -- fuschia Override -- */
-	--color-fuschia-50: #f2f1f4;
-	--color-fuschia-100: #dad4e0;
-	--color-fuschia-200: #c3b8cd;
-	--color-fuschia-300: #ab9dbb;
-	--color-fuschia-400: #9482a8;
-	--color-fuschia-500: #7d6a92;
-	--color-fuschia-600: #645477;
-	--color-fuschia-700: #4c405d;
-	--color-fuschia-800: #362c44;
-	--color-fuschia-900: #211a2d;
-	--color-fuschia-950: #0c0118;
 
-	/* -- teal Override -- */
-	--color-teal-50: #f4f2f1;
-	--color-teal-100: #fdddc6;
-	--color-teal-200: #ffc89d;
-	--color-teal-300: #ffb373;
-	--color-teal-400: #ff9e48;
-	--color-teal-500: #e9862b;
-	--color-teal-600: #ba6b25;
-	--color-teal-700: #8d521f;
-	--color-teal-800: #633a18;
-	--color-teal-900: #3b2310;
-	--color-teal-950: #180c01;
+/* -- emerald Override -- */
+--color-emerald-50: #f1f4f1;
+--color-emerald-100: #d2ead8;
+--color-emerald-200: #b4dfbe;
+--color-emerald-300: #95d5a4;
+--color-emerald-400: #75ca88;
+--color-emerald-500: #50be6c;
+--color-emerald-600: #3d9956;
+--color-emerald-700: #2b7640;
+--color-emerald-800: #1a542c;
+--color-emerald-900: #0b3518;
+--color-emerald-950: #011807;
 
-	/* -- cyan Override -- */
-	--color-cyan-50: #f4f2f1;
-	--color-cyan-100: #fdddc6;
-	--color-cyan-200: #ffc89d;
-	--color-cyan-300: #ffb373;
-	--color-cyan-400: #ff9e48;
-	--color-cyan-500: #e9862b;
-	--color-cyan-600: #ba6b25;
-	--color-cyan-700: #8d521f;
-	--color-cyan-800: #633a18;
-	--color-cyan-900: #3b2310;
-	--color-cyan-950: #180c01;
+/* -- amber Override -- */
+--color-amber-50: #f4f1f3;
+--color-amber-100: #efe0ed;
+--color-amber-200: #eacee6;
+--color-amber-300: #e5bddf;
+--color-amber-400: #dfacd7;
+--color-amber-500: #d99bd0;
+--color-amber-600: #ae78a6;
+--color-amber-700: #85567e;
+--color-amber-800: #5e3658;
+--color-amber-900: #3a1935;
+--color-amber-950: #180115;
+
+
+/* -- yellow Override -- */
+--color-yellow-50: #f4f1f3;
+--color-yellow-100: #efe0ed;
+--color-yellow-200: #eacee6;
+--color-yellow-300: #e5bddf;
+--color-yellow-400: #dfacd7;
+--color-yellow-500: #d99bd0;
+--color-yellow-600: #ae78a6;
+--color-yellow-700: #85567e;
+--color-yellow-800: #5e3658;
+--color-yellow-900: #3a1935;
+--color-yellow-950: #180115;
+
+/* -- blue Override -- */
+--color-blue-50: #f1f2f4;
+--color-blue-100: #d1deef;
+--color-blue-200: #b1cae9;
+--color-blue-300: #92b5e2;
+--color-blue-400: #73a1dc;
+--color-blue-500: #538cd4;
+--color-blue-600: #3e70aa;
+--color-blue-700: #2b5482;
+--color-blue-800: #193a5b;
+--color-blue-900: #0a2238;
+--color-blue-950: #010b18;
+
+
+/* -- sky Override -- */
+--color-sky-50: #f1f2f4;
+--color-sky-100: #d1deef;
+--color-sky-200: #b1cae9;
+--color-sky-300: #92b5e2;
+--color-sky-400: #73a1dc;
+--color-sky-500: #538cd4;
+--color-sky-600: #3e70aa;
+--color-sky-700: #2b5482;
+--color-sky-800: #193a5b;
+--color-sky-900: #0a2238;
+--color-sky-950: #010b18;
+
+
+/* -- indigo Override -- */
+--color-indigo-50: #f1f2f4;
+--color-indigo-100: #d1deef;
+--color-indigo-200: #b1cae9;
+--color-indigo-300: #92b5e2;
+--color-indigo-400: #73a1dc;
+--color-indigo-500: #538cd4;
+--color-indigo-600: #3e70aa;
+--color-indigo-700: #2b5482;
+--color-indigo-800: #193a5b;
+--color-indigo-900: #0a2238;
+--color-indigo-950: #010b18;
+
+/* -- violet Override -- */
+--color-violet-50: #f2f1f4;
+--color-violet-100: #dcd7e2;
+--color-violet-200: #c7bdd1;
+--color-violet-300: #b1a4c0;
+--color-violet-400: #9c8caf;
+--color-violet-500: #88749e;
+--color-violet-600: #6c5a81;
+--color-violet-700: #524065;
+--color-violet-800: #39294a;
+--color-violet-900: #211230;
+--color-violet-950: #0c0118;
+
+
+/* -- purple Override -- */
+--color-purple-50: #f2f1f4;
+--color-purple-100: #dcd7e2;
+--color-purple-200: #c7bdd1;
+--color-purple-300: #b1a4c0;
+--color-purple-400: #9c8caf;
+--color-purple-500: #88749e;
+--color-purple-600: #6c5a81;
+--color-purple-700: #524065;
+--color-purple-800: #39294a;
+--color-purple-900: #211230;
+--color-purple-950: #0c0118;
+
+
+/* -- fuschia Override -- */
+--color-fuschia-50: #f2f1f4;
+--color-fuschia-100: #dcd7e2;
+--color-fuschia-200: #c7bdd1;
+--color-fuschia-300: #b1a4c0;
+--color-fuschia-400: #9c8caf;
+--color-fuschia-500: #88749e;
+--color-fuschia-600: #6c5a81;
+--color-fuschia-700: #524065;
+--color-fuschia-800: #39294a;
+--color-fuschia-900: #211230;
+--color-fuschia-950: #0c0118;
+
+/* -- teal Override -- */
+--color-teal-50: #f4f2f1;
+--color-teal-100: #f7e1cd;
+--color-teal-200: #facfaa;
+--color-teal-300: #fcbc86;
+--color-teal-400: #fea860;
+--color-teal-500: #ff922e;
+--color-teal-600: #ca751e;
+--color-teal-700: #985912;
+--color-teal-800: #693e08;
+--color-teal-900: #3e2403;
+--color-teal-950: #180c01;
+
+
+/* -- cyan Override -- */
+--color-cyan-50: #f4f2f1;
+--color-cyan-100: #f7e1cd;
+--color-cyan-200: #facfaa;
+--color-cyan-300: #fcbc86;
+--color-cyan-400: #fea860;
+--color-cyan-500: #ff922e;
+--color-cyan-600: #ca751e;
+--color-cyan-700: #985912;
+--color-cyan-800: #693e08;
+--color-cyan-900: #3e2403;
+--color-cyan-950: #180c01;
 }
+/* -- Prism Rules -- */code[class*="language-"], pre[class*="language-"] { color: var(--text); }
+:not(pre) > code[class*="language-"], pre[class*="language-"] { background: var(--surface-200); }
+.token.keyword,.token.prolog,.token.doctype,.token.atrule { color: var(--color-violet-300); }
+.token.builtin,.token.entity,.token.deleted { color: var(--color-red-300); }
+.token.class-name,.token.attr-name,.token.namespace { color: var(--color-yellow-300); }
+.token.function,.token.selector {color: var(--color-blue-300) }
+.token.boolean,.token.number,.token.constant {color: var(--color-orange-200);}
+.token.string,.token.char,.token.url,.token.attr-value,.token.inserted { color: var(--color-green-300); }
+.token.symbol { color: var(--color-yellow-300); }
+.token.regex { color: var(--color-red-200); }
+.token.operator { color: var(--color-blue-200); }
+.token.variable { color: var(--color-gray-100); }
+.token.property,.token.tag { color: var(--color-blue-300); }
+.token.punctuation,.token.comment {color: var(--marking-300);}
+.token.cdata {color: var(--color-teal-300);}
+.token.important,.token.bold { font-weight: bold; }
+.token.italic { font-style: italic; }

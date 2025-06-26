@@ -1,9 +1,9 @@
-import { Button } from "~/devano/atoms/buttons/Button";
-import { TextInput } from "~/devano/atoms/inputs/TextInput";
+import { Button, TextInput } from "~/devano/atoms";
 import { useAuthView } from "../Context";
 import AuthCard from "../components/AuthCard";
 import { auth } from "../api";
 import { z } from "zod";
+import { Setter } from "solid-js";
 
 const emailSchema = z.object({
 	email: z.string().email(),
@@ -34,7 +34,7 @@ export default function ResetPassword() {
 			<TextInput
 				label="Email"
 				get={state.email.get}
-				set={state.email.set}
+				set={state.email.set as Setter<string>}
 				validationSchema={emailSchema}
 				onValidationError={state.err.set}
 			/>

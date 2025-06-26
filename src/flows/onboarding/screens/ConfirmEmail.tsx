@@ -1,9 +1,11 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { Card } from "~/devano/atoms/layout/Card";
-import { Heading } from "~/devano/atoms/layout/Heading";
-import { TextInput } from "~/devano/atoms/inputs/TextInput";
-import { Button } from "~/devano/atoms/buttons/Button";
-import { ErrorMessage } from "~/devano/atoms/feedback/ErrorMessage";
+import {
+	Stack,
+	Card,
+	Heading,
+	TextInput,
+	Button,
+	ErrorMessage,
+} from "~/devano/atoms";
 import { useOnboarding } from "../Context";
 import { createSignal, onMount, Show } from "solid-js";
 import { onboarding } from "../api";

@@ -1,7 +1,4 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { Card } from "~/devano/atoms/layout/Card";
-import { Heading } from "~/devano/atoms/layout/Heading";
-import { Button } from "~/devano/atoms/buttons/Button";
+import { Stack, Card, Heading, Button } from "~/devano/atoms";
 import { useOnboarding, OnboardingSteps } from "../Context";
 
 export default function ChooseAuthMethod() {

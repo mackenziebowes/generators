@@ -1,5 +1,4 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { Card } from "~/devano/atoms/layout/Card";
+import { Stack, Card } from "~/devano/atoms";
 
 export default function Skeleton() {
 	return (

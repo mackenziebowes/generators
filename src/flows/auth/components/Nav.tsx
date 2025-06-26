@@ -1,5 +1,4 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { AnchorButton } from "~/devano/atoms/buttons/AnchorButton";
+import { AnchorButton, Stack } from "~/devano/atoms";
 import { useAuthView, AuthPages } from "../Context";
 import { Show } from "solid-js";
 

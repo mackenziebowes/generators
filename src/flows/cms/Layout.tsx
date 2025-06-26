@@ -2,8 +2,7 @@ import { useCMSAdmin, CMSAdminViews } from "./Context";
 import { JSX, Suspense } from "solid-js";
 import Screens from "./screens";
 import AdminNav from "./_components/Nav";
-import Stack from "~/devano/atoms/layout/Stack";
-import { Page } from "~/devano/atoms/layout/Page";
+import { Stack, Page } from "~/devano/atoms";
 
 interface ProviderProps extends JSX.HTMLAttributes<HTMLDivElement> {}
 

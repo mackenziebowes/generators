@@ -1,12 +1,14 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { Card } from "~/devano/atoms/layout/Card";
-import { Heading } from "~/devano/atoms/layout/Heading";
-import { Button } from "~/devano/atoms/buttons/Button";
-import { ErrorMessage } from "~/devano/atoms/feedback/ErrorMessage";
-import { WarningMessage } from "~/devano/atoms/feedback/WarningMessage";
+import {
+	Stack,
+	Card,
+	Heading,
+	Button,
+	ErrorMessage,
+	WarningMessage,
+	PasswordInput,
+} from "~/devano/atoms";
 import { useOnboarding } from "../Context";
 import { createSignal, createEffect } from "solid-js";
-import { PasswordInput } from "~/devano/atoms/inputs/PasswordInput";
 import { onboarding } from "../api";
 
 export default function SetPassword() {

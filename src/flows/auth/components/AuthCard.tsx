@@ -1,10 +1,7 @@
-import Stack from "~/devano/atoms/layout/Stack";
-import { Heading } from "~/devano/atoms/layout/Heading";
 import AuthNav from "../components/Nav";
 import { JSX, Show, splitProps } from "solid-js";
 import { useAuthView } from "../Context";
-import { ErrorMessage } from "~/devano/atoms/feedback/ErrorMessage";
-import { Message } from "~/devano/atoms/feedback/Message";
+import { ErrorMessage, Stack, Message, Heading } from "~/devano/atoms";
 
 interface AuthCardProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	title: string;

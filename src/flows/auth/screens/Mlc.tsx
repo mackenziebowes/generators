@@ -1,4 +1,4 @@
-import { ErrorMessage } from "~/devano/atoms/feedback/ErrorMessage";
+import { ErrorMessage } from "~/devano/atoms";
 import { AuthPages, useAuthView } from "../Context";
 import AuthCard from "../components/AuthCard";
 import { onMount } from "solid-js";

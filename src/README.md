@@ -9,6 +9,7 @@ This directory contains the source code for the authentication client applicatio
 - **devano/**: Component and utility library
   - **api/**: API integration utilities and endpoints
   - **atoms/**: Atomic UI components (buttons, inputs, layout, etc.)
+  - **components/**: Composed UI (Accordions, Breadcrumbs, Tabs, etc.)
   - **css/**: CSS styles and palette
   - **utils/**: Utility functions
 - **flows/**: Feature-specific flows

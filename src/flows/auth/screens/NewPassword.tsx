@@ -1,9 +1,8 @@
-import { Button } from "~/devano/atoms/buttons/Button";
-import { PasswordInput } from "~/devano/atoms/inputs/PasswordInput";
+import { Button, PasswordInput } from "~/devano/atoms";
 import { AuthPages, useAuthView } from "../Context";
 import AuthCard from "../components/AuthCard";
 import { auth } from "../api";
-import { createSignal } from "solid-js";
+import { createSignal, Setter } from "solid-js";
 import { useParams } from "@solidjs/router";
 
 export default function UpdatePassword() {
@@ -31,7 +30,7 @@ export default function UpdatePassword() {
 			<PasswordInput
 				label="New Password"
 				get={state.password.get}
-				set={state.password.set}
+				set={state.password.set as Setter<string>}
 			/>
 			<PasswordInput
 				label="Confirm New Password"
