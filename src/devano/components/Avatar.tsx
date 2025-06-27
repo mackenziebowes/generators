@@ -1,5 +1,5 @@
 import { JSX, splitProps, createSignal, Show } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 
 interface AvatarFallbackProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	name?: string;

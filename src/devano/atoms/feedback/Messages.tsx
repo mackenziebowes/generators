@@ -1,4 +1,4 @@
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 import { JSX, splitProps, Show } from "solid-js";
 
 interface MessageProps extends JSX.HTMLAttributes<HTMLDivElement> {

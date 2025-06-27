@@ -1,5 +1,5 @@
 import { JSX, splitProps, For } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 interface ProgressDotsProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	length: number;
 	index: number;

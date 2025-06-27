@@ -10,7 +10,7 @@ import {
 	Match,
 } from "solid-js";
 import { createStore } from "solid-js/store";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 import { Stack, Show, Heading, AnchorButton } from "~/devano/atoms";
 
 interface AccordionContextValue {

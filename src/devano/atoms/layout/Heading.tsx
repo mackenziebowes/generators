@@ -1,5 +1,5 @@
 import { JSX, splitProps, Switch, Match } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 
 interface HeadingProps extends JSX.HTMLAttributes<HTMLHeadingElement> {
 	as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";

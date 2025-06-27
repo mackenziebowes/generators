@@ -1,5 +1,5 @@
 import { JSX, splitProps } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 
 interface StackProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	direction?: "row" | "col";

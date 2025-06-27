@@ -3,7 +3,7 @@
  */
 
 import { JSX, splitProps } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 
 interface BreadcrumbItemProps extends JSX.HTMLAttributes<HTMLDivElement> {
 	children: JSX.Element; // can only have a single child

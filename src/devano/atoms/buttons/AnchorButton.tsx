@@ -1,5 +1,5 @@
 import { JSX, splitProps } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 
 interface AnchorProps extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
 	color?: "default" | "ara" | "ene" | "izi";

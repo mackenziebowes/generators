@@ -1,5 +1,5 @@
 import { JSX, splitProps, createSignal } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 import type { Accessor, Setter } from "solid-js";
 import { ZodType, ZodError } from "zod";
 

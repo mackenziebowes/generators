@@ -1,5 +1,5 @@
 import { JSX, splitProps, createSignal, onMount } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 import { Show } from "../stateful";
 
 /**

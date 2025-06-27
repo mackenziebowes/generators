@@ -8,7 +8,7 @@ timelogs.housekeeping.changelog = [
         start = "2025-06-26 16:21:47",
         end = "2025-06-26 16:22:40",
         commit = "0.0.3"
-    }
+    },
 ]
 
 timelogs.features.components.avatar = [
@@ -59,3 +59,32 @@ timelogs.features.components.breadcrumbs = [
     }
 ]
 
+timelogs.features.components.alerts = [
+    {
+        comment = "basic impl - global context",
+        extra = [
+            "store alert open/children in global state - only one alert at a time, accessible everywhere",
+            "rabbithole - added devano/utils/breakpoint.ts for rapidly prepending tailwind breakpoint utils to classes for use with cn"
+        ],
+        start = "2025-06-27 07:51:58",
+        end = "2025-06-27 09:07:57"
+    },
+    {
+        comment = "basic impl - trigger",
+        start = "",
+        end = ""
+    },
+    {
+        comment = "basic impl - register self",
+        start = "",
+        end = ""
+    }
+]
+
+timelogs.features.componentDirectory = [
+    {
+        comment = "min, max, tw-hint",
+        start = "2025-06-27 09:09:25",
+        end = "2025-06-27 12:03:27"
+    }
+]

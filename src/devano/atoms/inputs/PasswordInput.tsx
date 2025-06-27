@@ -1,5 +1,5 @@
 import { JSX, Match, splitProps, Switch, createSignal } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 import { IconButton } from "~/devano/atoms";
 import { EyeOpen } from "~/devano/atoms/icons";
 import { EyeClosed } from "~/devano/atoms/icons";

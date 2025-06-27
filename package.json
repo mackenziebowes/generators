@@ -1,11 +1,13 @@
 {
 	"name": "deko-client-solid",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"type": "module",
 	"scripts": {
 		"dev": "vinxi dev",
 		"build": "vinxi build",
-		"start": "vinxi start"
+		"start": "vinxi start",
+		"tw-hint-single": "bun run scripts/inject-tw-hint-single.ts",
+		"tw-hint": "bun run scripts/inject-tw-hint-global.ts 'src/**/*.tsx'"
 	},
 	"dependencies": {
 		"@solidjs/router": "^0.15.0",
@@ -14,6 +16,7 @@
 		"clsx": "^2.1.1",
 		"solid-js": "^1.9.5",
 		"tailwind-merge": "^3.3.0",
+		"ts-morph": "^26.0.0",
 		"vinxi": "^0.5.3",
 		"zod": "^3.25.42"
 	},

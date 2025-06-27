@@ -1,5 +1,5 @@
 import { JSX, splitProps } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 export function Page(props: JSX.HTMLAttributes<HTMLElement>) {
 	const [l, rest] = splitProps(props, ["class"]);
 	let pageCn = cn([

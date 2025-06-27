@@ -1,5 +1,5 @@
 import { JSX, splitProps } from "solid-js";
-import { cn } from "~/devano/utils/cn";
+import { cn } from "~/devano/utils";
 
 export function EyeOpen(props: JSX.SvgSVGAttributes<SVGSVGElement>) {
 	const [l, rest] = splitProps(props, ["width", "height", "class"]);

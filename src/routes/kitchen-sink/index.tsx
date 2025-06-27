@@ -1,9 +1,15 @@
 import * as Atoms from "~/devano/atoms";
 import * as Comp from "~/devano/components";
+import { min, max } from "~/devano/utils";
 
 export default function KitchenSink() {
+	const pageBase = "py-[16px]";
+	const pageLg = "lg:py-[32px]";
+	/* from min["lg"]("py-[32px]"); */
+	const pageLgMax = "max-xl:py-[36px]";
+	/* from max["xl"]("py-[36px]"); */
 	return (
-		<Atoms.Page class="py-[24px]">
+		<Atoms.Page class={pageBase + pageLg + pageLgMax}>
 			<Atoms.Stack
 				direction="col"
 				class="gap-3 items-center"

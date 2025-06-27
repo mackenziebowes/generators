@@ -9,7 +9,7 @@ const AuthPortal = () => {
 	return (
 		<>
 			<Modal
-				when={state.get()}
+				when={state.get}
 				close={() => state.set(false)}
 			>
 				<AuthViewProvider>
