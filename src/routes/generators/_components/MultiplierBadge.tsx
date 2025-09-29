@@ -1,0 +1,11 @@
+const multiplierToPercent = (multiplier: number) => {
+  if (multiplier < 0) return "";
+  const difference = multiplier - 1;
+  if (difference == 0) return "";
+  return `${Math.round(difference * 100)}%`;
+};
+
+export const MultiplierBadge = ({ multiplier }: { multiplier: number }) => {
+  const percent = multiplierToPercent(multiplier);
+  return percent ? <>{percent}</> : null;
+};
