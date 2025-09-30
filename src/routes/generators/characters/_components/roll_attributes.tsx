@@ -4,11 +4,12 @@ import {
   JSX,
   Accessor,
   Setter,
-  createEffect,
   Switch,
   Match,
+  onMount,
 } from "solid-js";
-
+import { Stack, Button, Card, Heading } from "~/devano/atoms";
+import { ExclusiveButton } from "~/devano/components";
 import {
   E_basic_six,
   Full_JRPG,
@@ -16,7 +17,6 @@ import {
   W_basic_six,
 } from "../_data/attributes";
 import { MultiplierBadge } from "~/routes/generators/_components/MultiplierBadge";
-import { Stack, Button, Card, Heading, CheckboxInput } from "~/devano/atoms";
 
 type AttributeWithBuff = {
   title: string;
@@ -65,12 +65,10 @@ export default function RollAttributes() {
       bag.splice(selectedIndex, 1);
     }
     const ordered = [...selected, ...bag];
-    console.log({ ordered });
     let counter = 0;
 
     for (const _ in Array.from({ length: selectedSource.length })) {
       const attribute = selectedSource[counter];
-      console.log({ matching: attribute.title });
       const matchIndex = ordered.findIndex(
         (item) => item.title == attribute.title,
       );
@@ -136,6 +134,8 @@ export default function RollAttributes() {
 
     set_hasRolled(true);
   };
+
+  onMount(rollBuffs);
   return (
     <Stack direction="col" class="gap-[12px]">
       <Card>
@@ -164,24 +164,25 @@ interface AttributeDisplayArgs extends JSX.HTMLAttributes<HTMLDivElement> {
 const AttributeDisplay = (props: AttributeDisplayArgs) => {
   const attrMemo = () => props.attributes();
   return (
-    <Card>
+    <Stack
+      direction="col"
+      class="justify-start align-start gap-[12px] px-0 mx-0"
+    >
       <For each={attrMemo()}>
         {(item) => (
-          <Stack direction="col">
-            <div class="flex flex-col w-full max-w-[35ch]">
-              <Heading
-                as="h3"
-                class="text-2xl sm:text-2xl md:text-2xl lg:text-2xl font-bold"
-              >
-                {item.title} <MultiplierBadge multiplier={item.multiplier} />
-              </Heading>
-              <p class="text-lg">{item.buff_name}</p>
-              <p>{item.description}</p>
-            </div>
-          </Stack>
+          <div class="flex flex-col w-full max-w-[40ch] self-start">
+            <Heading
+              as="h3"
+              class="text-2xl sm:text-2xl md:text-2xl lg:text-2xl font-bold"
+            >
+              {item.title} <MultiplierBadge multiplier={item.multiplier} />
+            </Heading>
+            <p class="text-lg">{item.buff_name}</p>
+            <p>{item.description}</p>
+          </div>
         )}
       </For>
-    </Card>
+    </Stack>
   );
 };
 
@@ -189,26 +190,6 @@ interface AttributeHeritageSelector extends JSX.HTMLAttributes<HTMLDivElement> {
   get: Accessor<HeritageOptions>;
   set: Setter<HeritageOptions>;
 }
-
-interface ExclusiveButtonInstance
-  extends JSX.ButtonHTMLAttributes<HTMLButtonElement> {
-  condition: boolean;
-  trigger: Function;
-  label: string;
-}
-
-const ExclusiveButton = (props: ExclusiveButtonInstance) => {
-  return (
-    <Switch>
-      <Match when={props.condition}>
-        <Button outline>{props.label}</Button>
-      </Match>
-      <Match when={!props.condition}>
-        <Button onclick={() => props.trigger()}>{props.label}</Button>
-      </Match>
-    </Switch>
-  );
-};
 
 const AttributeSourceSelect = (props: AttributeHeritageSelector) => {
   return (
