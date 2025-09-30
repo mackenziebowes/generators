@@ -3,7 +3,7 @@ import {
   randomFromArray,
   uniqueFromRandom,
 } from "~/routes/generators/_utils/randomFrom";
-export const socialDharmas = () => {
+export const socialDharmas = (): Pattern[] => {
   let arr = [];
 
   // == Social & Familial Dharmas ==
@@ -29,7 +29,7 @@ export const socialDharmas = () => {
   return arr;
 };
 
-export const personalDharmas = () => {
+export const personalDharmas = (): Pattern[] => {
   let arr = [];
 
   // == Personal & Spiritual Dharmas ==
@@ -55,7 +55,7 @@ export const personalDharmas = () => {
   return arr;
 };
 
-export const primalDharmas = () => {
+export const primalDharmas = (): Pattern[] => {
   let arr = [];
 
   // == Cosmic & Primal Dharmas ==
@@ -78,34 +78,39 @@ export const primalDharmas = () => {
   return arr;
 };
 
-export const forbiddenDharmas = () => {
+export const forbiddenDharmas = (): Pattern[] => {
   let arr = [];
 
   // == Forbidden "Shadow" Dharmas ==
-  arr[18] = createPattern("The Destroyer").addDescription(
+  arr[0] = createPattern("The Destroyer").addDescription(
     "The duty to cleanse through ruin. To tear down the rotten, the corrupt, and the outdated so that something new can be built.",
   );
-  arr[19] = createPattern("The Judge").addDescription(
+  arr[1] = createPattern("The Judge").addDescription(
     "The duty to deliver absolute, merciless justice without compassion or mercy, as dictated by a strict, unwavering code.",
   );
-  arr[20] = createPattern("The Keeper of Forbidden Lore").addDescription(
+  arr[2] = createPattern("The Keeper of Forbidden Lore").addDescription(
     "The duty to guard dangerous knowledge that could end the world, which requires understanding it enough to control it.",
   );
-  arr[21] = createPattern("The Harbinger").addDescription(
+  arr[3] = createPattern("The Harbinger").addDescription(
     "The duty to serve a great, often apocalyptic, power or prophecy, acting as the instrument of a destined end.",
   );
 
   return arr;
 };
 
-const getNormalMetropolitanConflict = () => {
+export type DharmicConflict = {
+  external: Pattern;
+  internal: Pattern;
+};
+
+const getNormalMetropolitanConflict = (): DharmicConflict => {
   return {
     external: randomFromArray(socialDharmas()),
     internal: randomFromArray(personalDharmas()),
   };
 };
 
-const getNormalFrontierConflict = () => {
+const getNormalFrontierConflict = (): DharmicConflict => {
   const [external, internal] = uniqueFromRandom(socialDharmas(), 2);
   return {
     external,
@@ -113,14 +118,14 @@ const getNormalFrontierConflict = () => {
   };
 };
 
-const getHeroicConflict = () => {
+const getHeroicConflict = (): DharmicConflict => {
   return {
     external: randomFromArray(socialDharmas()),
     internal: randomFromArray(primalDharmas()),
   };
 };
 
-const getForbiddenConflict = () => {
+const getForbiddenConflict = (): DharmicConflict => {
   return {
     external: randomFromArray(socialDharmas()),
     internal: randomFromArray(forbiddenDharmas()),

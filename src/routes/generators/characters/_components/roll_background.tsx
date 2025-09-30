@@ -18,6 +18,7 @@ import {
   W_Noble_Backgrounds,
 } from "../_data/backgrounds";
 import { randomFromArray } from "../../_utils";
+import { GenerationCard } from "../../_components/GenerationCard";
 
 type BackgroundSetSelection =
   | "Urban"
@@ -56,28 +57,18 @@ export default function RollBackground() {
   onMount(rollBackground);
 
   return (
-    <Stack direction="col" class="gap-[12px] w-full">
-      <Card class="w-full">
-        <Heading
-          as="h2"
-          class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
-        >
-          Background
-        </Heading>
-        <Switch>
-          <Match when={hasRolled()}>
-            <BackgroundDisplay background={selectedBackground()} />
-          </Match>
-        </Switch>
-        <BackgroundSourceSelector
-          get={backgroundMode}
-          set={set_backgroundMode}
-        />
-        <Button onclick={rollBackground} class="w-fit">
-          Roll
-        </Button>
-      </Card>
-    </Stack>
+    <GenerationCard title="Background" trigger={rollBackground}>
+      <p>
+        This tab describes what this character is doing <strong>now</strong> -
+        before the inciting incident.
+      </p>
+      <Switch>
+        <Match when={hasRolled()}>
+          <BackgroundDisplay background={selectedBackground()} />
+        </Match>
+      </Switch>
+      <BackgroundSourceSelector get={backgroundMode} set={set_backgroundMode} />
+    </GenerationCard>
   );
 }
 

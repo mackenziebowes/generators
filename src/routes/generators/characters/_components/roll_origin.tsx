@@ -26,6 +26,15 @@ export default function RollOrigin() {
 
   return (
     <GenerationCard title="Origin" trigger={rollOrigin}>
+      <p>
+        This tab is purely inspirational and used to intimate the various
+        skin-colorings / cultural accoutrement. For Earth settings, the "Center"
+        is the Mediterranean, but you can match these directions to your custom
+        world or pick a new "Center" on Earth.
+        <br />
+        "Mid North" would be around The UK/Poland, "Mid South" would be around
+        the Sahel.
+      </p>
       <Switch>
         <Match when={hasRolled()}>
           <OriginDisplay origin={selectedOrigin()} />

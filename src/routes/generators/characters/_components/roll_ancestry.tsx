@@ -46,6 +46,10 @@ export default function RollAncestry() {
 
   return (
     <GenerationCard title="Ancestry" trigger={rollAncestry}>
+      <p>
+        This tab describes what type of creature this character is - The
+        "Half-*" from the extended tab and all Beastman are half-human.
+      </p>
       <Switch>
         <Match when={hasRolled()}>
           <AncestryDisplay ancestry={selectedAncestry()} />

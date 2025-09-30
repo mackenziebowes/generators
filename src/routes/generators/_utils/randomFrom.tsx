@@ -7,7 +7,9 @@ export const randomFromArray = (input: any[]) => {
 };
 
 export const randomIntFromRange = (min: number, max: number) => {
-  return Math.round(min) + Math.round(Math.random() * max);
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
 export const uniqueFromRandom = (input: any[], count: number) => {

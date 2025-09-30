@@ -268,6 +268,11 @@ export default function RollMagic() {
 
   return (
     <GenerationCard title="Magic" trigger={rollMagic}>
+      <p>
+        The magic aptitudes of this character - Easy mode describes which types
+        the character grows faster with, Hard mode describes which types the
+        character has access to.
+      </p>
       <Switch>
         <Match when={hasRolled()}>
           <DisplayMagicDetails attributes={magicSystem} />

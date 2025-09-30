@@ -139,6 +139,9 @@ export default function RollAttributes() {
   onMount(rollBuffs);
   return (
     <GenerationCard title="Attributes" trigger={rollBuffs}>
+      <p>
+        The growth aptitudes of this character - loosely intimates classes/jobs.
+      </p>
       <Switch>
         <Match when={hasRolled()}>
           <AttributeDisplay attributes={buffMeta} />

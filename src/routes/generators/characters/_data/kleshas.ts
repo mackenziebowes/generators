@@ -59,6 +59,8 @@ export interface Profile {
   latent: Pattern[];
 }
 
+export type KleshaProfile = SimpleProfile | Profile;
+
 export const generateSimpleKleshaProfila = () => {
   let [primary, fallback] = uniqueFromRandom(kleshas(), 2);
   return { primary, fallback };
@@ -67,7 +69,7 @@ export const generateSimpleKleshaProfila = () => {
 export const generateFullKleshaProfile = () => {
   let [primary, fallback, ...latent] = uniqueFromRandom(
     kleshas(),
-    randomIntFromRange(3, 6),
+    randomIntFromRange(3, 5),
   );
   return {
     primary,

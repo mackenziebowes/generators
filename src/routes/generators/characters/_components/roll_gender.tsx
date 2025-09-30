@@ -9,10 +9,9 @@ import {
 } from "solid-js";
 import { Stack, Button, Card, Heading } from "~/devano/atoms";
 import { randomFromArray } from "../../_utils";
+import { GenerationCard } from "../../_components/GenerationCard";
 
-type AncestrySetSelection = "Core" | "Extended" | "Beastman";
-
-export default function RollAncestry() {
+export default function RollGender() {
   const [selectedGender, set_selectedGender] = createSignal<string>("");
 
   const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
@@ -29,24 +28,13 @@ export default function RollAncestry() {
   onMount(rollGender);
 
   return (
-    <Stack direction="col" class="gap-[12px] w-full">
-      <Card class="w-full">
-        <Heading
-          as="h2"
-          class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
-        >
-          Gender
-        </Heading>
-        <Switch>
-          <Match when={hasRolled()}>
-            <GenderDisplay gender={selectedGender()} />
-          </Match>
-        </Switch>
-        <Button onclick={rollGender} class="w-fit">
-          Roll
-        </Button>
-      </Card>
-    </Stack>
+    <GenerationCard title="Gender" trigger={rollGender}>
+      <Switch>
+        <Match when={hasRolled()}>
+          <GenderDisplay gender={selectedGender()} />
+        </Match>
+      </Switch>
+    </GenerationCard>
   );
 }
 
@@ -60,8 +48,3 @@ const GenderDisplay = ({ gender }: { gender: string }) => {
     </Heading>
   );
 };
-
-interface AncestrySelector extends JSX.HTMLAttributes<HTMLDivElement> {
-  get: Accessor<AncestrySetSelection>;
-  set: Setter<AncestrySetSelection>;
-}

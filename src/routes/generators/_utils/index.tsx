@@ -1,3 +1,4 @@
 import { randomFromArray } from "./randomFrom";
+import { breakpoints } from "./responsive";
 
-export { randomFromArray };
+export { randomFromArray, breakpoints };
