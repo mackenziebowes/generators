@@ -1,3 +1,3 @@
-import { randomFrom } from "./randomFrom";
+import { randomFromArray } from "./randomFrom";
 
-export { randomFrom };
+export { randomFromArray };

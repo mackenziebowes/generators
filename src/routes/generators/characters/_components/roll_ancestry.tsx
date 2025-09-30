@@ -15,7 +15,8 @@ import {
   W_extended_ancestries,
   Basic_Animal_hybrid_ancestries,
 } from "../_data/ancestry";
-import { randomFrom } from "../../_utils";
+import { randomFromArray } from "../../_utils";
+import { GenerationCard } from "../../_components/GenerationCard";
 
 type AncestrySetSelection = "Core" | "Extended" | "Beastman";
 
@@ -37,30 +38,21 @@ export default function RollAncestry() {
   const rollAncestry = () => {
     set_hasRolled(false);
     const pool = getAncestryPool();
-    set_selectedAncestry(randomFrom(pool));
+    set_selectedAncestry(randomFromArray(pool));
     set_hasRolled(true);
   };
 
   onMount(rollAncestry);
 
   return (
-    <Stack direction="col" class="gap-[12px] w-full">
-      <Card class="w-full">
-        <Heading
-          as="h2"
-          class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
-        >
-          Ancestry
-        </Heading>
-        <Switch>
-          <Match when={hasRolled()}>
-            <AncestryDisplay ancestry={selectedAncestry()} />
-          </Match>
-        </Switch>
-        <AncestrySourceSelector get={ancestryMode} set={set_ancestryMode} />
-        <Button onclick={rollAncestry}>Roll</Button>
-      </Card>
-    </Stack>
+    <GenerationCard title="Ancestry" trigger={rollAncestry}>
+      <Switch>
+        <Match when={hasRolled()}>
+          <AncestryDisplay ancestry={selectedAncestry()} />
+        </Match>
+      </Switch>
+      <AncestrySourceSelector get={ancestryMode} set={set_ancestryMode} />
+    </GenerationCard>
   );
 }
 

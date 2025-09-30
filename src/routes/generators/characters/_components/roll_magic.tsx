@@ -16,6 +16,7 @@ import {
   Hybrid_Magic_Systems,
 } from "../_data/magic_types";
 import { MultiplierBadge } from "~/routes/generators/_components/MultiplierBadge";
+import { GenerationCard } from "../../_components/GenerationCard";
 
 function assignElementalAffinities(elements: string[]): string[] {
   const weights = elements.map((_, index) => 1 / (index + 1)); // Reciprocal weights [1, 0.5, 0.33, 0.25...]
@@ -266,23 +267,14 @@ export default function RollMagic() {
   onMount(rollMagic);
 
   return (
-    <Stack direction="col" class="gap-[12px]">
-      <Card>
-        <Heading
-          as="h2"
-          class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
-        >
-          Attributes
-        </Heading>
-        <Switch>
-          <Match when={hasRolled()}>
-            <DisplayMagicDetails attributes={magicSystem} />
-          </Match>
-        </Switch>
-        <SelectAptitude get={aptitude} set={set_aptitude} />
-        <SelectTradition get={tradition} set={set_tradition} />
-        <Button onclick={rollMagic}>Roll</Button>
-      </Card>
-    </Stack>
+    <GenerationCard title="Magic" trigger={rollMagic}>
+      <Switch>
+        <Match when={hasRolled()}>
+          <DisplayMagicDetails attributes={magicSystem} />
+        </Match>
+      </Switch>
+      <SelectAptitude get={aptitude} set={set_aptitude} />
+      <SelectTradition get={tradition} set={set_tradition} />
+    </GenerationCard>
   );
 }

@@ -17,6 +17,7 @@ import {
   W_basic_six,
 } from "../_data/attributes";
 import { MultiplierBadge } from "~/routes/generators/_components/MultiplierBadge";
+import { GenerationCard } from "../../_components/GenerationCard";
 
 type AttributeWithBuff = {
   title: string;
@@ -137,23 +138,14 @@ export default function RollAttributes() {
 
   onMount(rollBuffs);
   return (
-    <Stack direction="col" class="gap-[12px]">
-      <Card>
-        <Heading
-          as="h2"
-          class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
-        >
-          Attributes
-        </Heading>
-        <Switch>
-          <Match when={hasRolled()}>
-            <AttributeDisplay attributes={buffMeta} />
-          </Match>
-        </Switch>
-        <AttributeSourceSelect get={heritage} set={set_heritage} />
-        <Button onclick={rollBuffs}>Roll</Button>
-      </Card>
-    </Stack>
+    <GenerationCard title="Attributes" trigger={rollBuffs}>
+      <Switch>
+        <Match when={hasRolled()}>
+          <AttributeDisplay attributes={buffMeta} />
+        </Match>
+      </Switch>
+      <AttributeSourceSelect get={heritage} set={set_heritage} />
+    </GenerationCard>
   );
 }
 

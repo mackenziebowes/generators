@@ -1,3 +1,26 @@
-export const randomFrom = (input: any[]) => {
-  return input[Math.floor(Math.random() * input.length)];
+export const randomIndex = (length: number) => {
+  return Math.floor(Math.random() * length);
+};
+
+export const randomFromArray = (input: any[]) => {
+  return input[randomIndex(input.length)];
+};
+
+export const randomIntFromRange = (min: number, max: number) => {
+  return Math.round(min) + Math.round(Math.random() * max);
+};
+
+export const uniqueFromRandom = (input: any[], count: number) => {
+  let intCount = Math.floor(count);
+  if (intCount <= 0) return [];
+  let bag = [...input];
+  let counter = 0;
+  let output: any[] = [];
+  while (counter !== count) {
+    let index = randomIndex(bag.length);
+    output.push(bag[index]);
+    bag.splice(index, 1);
+    counter++;
+  }
+  return output;
 };

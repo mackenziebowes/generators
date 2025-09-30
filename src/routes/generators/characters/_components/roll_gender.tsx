@@ -8,7 +8,7 @@ import {
   onMount,
 } from "solid-js";
 import { Stack, Button, Card, Heading } from "~/devano/atoms";
-import { randomFrom } from "../../_utils";
+import { randomFromArray } from "../../_utils";
 
 type AncestrySetSelection = "Core" | "Extended" | "Beastman";
 
@@ -19,7 +19,7 @@ export default function RollAncestry() {
 
   const rollGender = () => {
     set_hasRolled(false);
-    set_selectedGender(randomFrom(["Male", "Female"]));
+    set_selectedGender(randomFromArray(["Male", "Female"]));
     if (Math.random() > 0.99) {
       set_selectedGender("Agender");
     }
@@ -42,7 +42,9 @@ export default function RollAncestry() {
             <GenderDisplay gender={selectedGender()} />
           </Match>
         </Switch>
-        <Button onclick={rollGender}>Roll</Button>
+        <Button onclick={rollGender} class="w-fit">
+          Roll
+        </Button>
       </Card>
     </Stack>
   );

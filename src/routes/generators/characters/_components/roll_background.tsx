@@ -17,7 +17,7 @@ import {
   W_Traveller_Backgrounds,
   W_Noble_Backgrounds,
 } from "../_data/backgrounds";
-import { randomFrom } from "../../_utils";
+import { randomFromArray } from "../../_utils";
 
 type BackgroundSetSelection =
   | "Urban"
@@ -49,15 +49,15 @@ export default function RollBackground() {
   const rollBackground = () => {
     set_hasRolled(false);
     const pool = getBackgroundPool();
-    set_selectedBackground(randomFrom(pool));
+    set_selectedBackground(randomFromArray(pool));
     set_hasRolled(true);
   };
 
   onMount(rollBackground);
 
   return (
-    <Stack direction="col" class="gap-[12px]">
-      <Card>
+    <Stack direction="col" class="gap-[12px] w-full">
+      <Card class="w-full">
         <Heading
           as="h2"
           class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
@@ -73,7 +73,9 @@ export default function RollBackground() {
           get={backgroundMode}
           set={set_backgroundMode}
         />
-        <Button onclick={rollBackground}>Roll</Button>
+        <Button onclick={rollBackground} class="w-fit">
+          Roll
+        </Button>
       </Card>
     </Stack>
   );
