@@ -12,6 +12,7 @@ import RollMagic from "./_components/roll_magic";
 import RollSamskara from "./_components/roll_samskara";
 import RollKlesha from "./_components/roll_klesha";
 import RollDharma from "./_components/roll_dharma";
+import { CharacterProvider } from "./_components/context";
 
 export default function Home() {
   return (
@@ -24,7 +25,9 @@ export default function Home() {
         <div class="flex flex-row gap-[12px] w-full">
           <Button outline>Roll Everything</Button>
         </div>
-        <Bento />
+        <CharacterProvider>
+          <Bento />
+        </CharacterProvider>
       </Stack>
     </Page>
   );

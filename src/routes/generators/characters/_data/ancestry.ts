@@ -35,6 +35,8 @@ export const Basic_Animal_hybrid_ancestries = [
   "Bat",
 ];
 
+export type AncestrySetSelection = "Core" | "Extended" | "Beastman";
+
 // export const Extended_Felidae_Hybrid_Ancestries = [
 //   "Lion",
 //   "Tiger",

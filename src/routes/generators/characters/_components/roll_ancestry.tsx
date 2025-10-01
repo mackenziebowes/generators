@@ -1,61 +1,26 @@
-import {
-  createSignal,
-  For,
-  JSX,
-  Accessor,
-  Setter,
-  Switch,
-  Match,
-  onMount,
-} from "solid-js";
-import { Stack, Button, Card, Heading } from "~/devano/atoms";
+import { JSX, Accessor, Setter, Switch, Match } from "solid-js";
+import { Stack, Heading } from "~/devano/atoms";
 import { ExclusiveButton } from "~/devano/components";
-import {
-  W_core_ancestries,
-  W_extended_ancestries,
-  Basic_Animal_hybrid_ancestries,
-} from "../_data/ancestry";
-import { randomFromArray } from "../../_utils";
+import { AncestrySetSelection } from "../_data/ancestry";
 import { GenerationCard } from "../../_components/GenerationCard";
-
-type AncestrySetSelection = "Core" | "Extended" | "Beastman";
+import { useCharacter } from "./context";
 
 export default function RollAncestry() {
-  const [selectedAncestry, set_selectedAncestry] = createSignal<string>("");
-  const [ancestryMode, set_ancestryMode] =
-    createSignal<AncestrySetSelection>("Core");
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
-  const getAncestryPool = () => {
-    switch (ancestryMode()) {
-      case "Core":
-        return W_core_ancestries;
-      case "Extended":
-        return [...W_core_ancestries, ...W_extended_ancestries];
-      case "Beastman":
-        return Basic_Animal_hybrid_ancestries;
-    }
-  };
-  const rollAncestry = () => {
-    set_hasRolled(false);
-    const pool = getAncestryPool();
-    set_selectedAncestry(randomFromArray(pool));
-    set_hasRolled(true);
-  };
-
-  onMount(rollAncestry);
+  const { ancestry } = useCharacter();
+  const { current, mode, rolled, roll } = ancestry;
 
   return (
-    <GenerationCard title="Ancestry" trigger={rollAncestry}>
+    <GenerationCard title="Ancestry" trigger={roll}>
       <p>
         This tab describes what type of creature this character is - The
         "Half-*" from the extended tab and all Beastman are half-human.
       </p>
       <Switch>
-        <Match when={hasRolled()}>
-          <AncestryDisplay ancestry={selectedAncestry()} />
+        <Match when={rolled.get()}>
+          <AncestryDisplay ancestry={current.get()} />
         </Match>
       </Switch>
-      <AncestrySourceSelector get={ancestryMode} set={set_ancestryMode} />
+      <AncestrySourceSelector get={mode.get} set={mode.set} />
     </GenerationCard>
   );
 }

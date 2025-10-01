@@ -12,7 +12,7 @@ export const GenerationCard = ({
 }) => {
   return (
     <Stack direction="col" class="gap-[12px] h-full w-full">
-      <Card class="w-full flex-grow">
+      <Card class="w-full flex-grow pt-[12px]">
         <Heading
           as="h2"
           class="text-2xl sm:text-3xl md:text-3xl lg:text-3xl font-normal md:font-semibold"
