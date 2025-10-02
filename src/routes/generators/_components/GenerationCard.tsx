@@ -19,10 +19,10 @@ export const GenerationCard = ({
         >
           {title}
         </Heading>
-        {children}
         <Button onclick={() => trigger()} class="w-fit justify-self-end">
           Roll
         </Button>
+        {children}
       </Card>
     </Stack>
   );

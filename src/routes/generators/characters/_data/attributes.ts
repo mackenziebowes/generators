@@ -1,3 +1,5 @@
+import { uniqueFromRandom } from "~/routes/generators/_utils/randomFrom";
+
 export const W_basic_six = [
   {
     title: "Strength",
@@ -162,3 +164,104 @@ export const Full_JRPG = [
     description: "Scales all effect multipliers.",
   },
 ];
+
+export type BaseAttribute = {
+  title: string;
+  label: string;
+  description: string;
+};
+
+export type AttributeWithBuff = BaseAttribute & {
+  buff_name:
+    | "Major Affinity"
+    | "Minor Affinity"
+    | "Minor Difficulty"
+    | "Major Difficulty"
+    | "Average Growth";
+  multiplier: 1.25 | 1.1 | 1.0 | 0.9 | 0.75;
+};
+
+export type HeritageOptions = "West" | "East" | "Simple J-ARPG" | "J-ARPG";
+
+export function pullItemsFromBag<T>(source: T[], count: number) {
+  let bag = [...source];
+  let selected = [];
+  for (const _ in Array.from({ length: 4 })) {
+    let selectedIndex = Math.floor(Math.random() * bag.length);
+    let selectedItem = bag[selectedIndex];
+    selected.push(selectedItem);
+    bag.splice(selectedIndex, 1);
+  }
+  return [...selected, ...bag];
+}
+
+export function assignBuffs(
+  set: BaseAttribute[],
+  sorted: BaseAttribute[],
+): AttributeWithBuff[] {
+  let counter = 0;
+  let output: AttributeWithBuff[] = [];
+  for (const _ in Array.from({ length: set.length })) {
+    const attribute = set[counter];
+    const matchIndex = sorted.findIndex(
+      (item) => item.title == attribute.title,
+    );
+    switch (matchIndex) {
+      case 0:
+        output.push({
+          ...attribute,
+          buff_name: "Major Affinity",
+          multiplier: 1.25,
+        });
+        break;
+      case 1:
+        output.push({
+          ...attribute,
+          buff_name: "Minor Affinity",
+          multiplier: 1.1,
+        });
+        break;
+      case 2:
+        output.push({
+          ...attribute,
+          buff_name: "Minor Difficulty",
+          multiplier: 0.9,
+        });
+        break;
+      case 3:
+        output.push({
+          ...attribute,
+          buff_name: "Major Difficulty",
+          multiplier: 0.75,
+        });
+        break;
+      default:
+        output.push({
+          ...attribute,
+          buff_name: "Average Growth",
+          multiplier: 1.0,
+        });
+        break;
+    }
+    counter++;
+  }
+  return output;
+}
+
+export function rollBuffs(type: HeritageOptions): AttributeWithBuff[] {
+  let sorted: BaseAttribute[] = [];
+  switch (type) {
+    case "West":
+      sorted = pullItemsFromBag(W_basic_six, 4);
+      return assignBuffs(W_basic_six, sorted);
+    case "East":
+      sorted = pullItemsFromBag(E_basic_six, 4);
+      return assignBuffs(E_basic_six, sorted);
+    case "Simple J-ARPG":
+      sorted = pullItemsFromBag(Simplified_JRPG, 4);
+      return assignBuffs(Simplified_JRPG, sorted);
+    case "J-ARPG":
+      sorted = pullItemsFromBag(Full_JRPG, 4);
+      return assignBuffs(Full_JRPG, sorted);
+  }
+}

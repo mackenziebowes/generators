@@ -15,13 +15,13 @@ export interface Ancestry {
   roll: () => void;
 }
 
-export const prepAncestryTools = () => {
-  const [selectedAncestry, set_selectedAncestry] = createSignal<string>("");
-  const [ancestryMode, set_ancestryMode] =
-    createSignal<AncestrySetSelection>("Core");
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
+export const prepAncestryTools = (): Ancestry => {
+  const [get_current, set_current] = createSignal<string>("");
+  const [get_mode, set_mode] = createSignal<AncestrySetSelection>("Core");
+  const [get_rolled, set_rolled] = createSignal<boolean>(false);
+  const [get_locked, set_locked] = createSignal<boolean>(false);
   const getAncestryPool = () => {
-    switch (ancestryMode()) {
+    switch (get_mode()) {
       case "Core":
         return W_core_ancestries;
       case "Extended":
@@ -30,27 +30,32 @@ export const prepAncestryTools = () => {
         return Basic_Animal_hybrid_ancestries;
     }
   };
-  const rollAncestry = () => {
-    set_hasRolled(false);
+  const rollTrigger = () => {
+    if (get_locked()) return;
+    set_rolled(false);
     const pool = getAncestryPool();
-    set_selectedAncestry(randomFromArray(pool));
-    set_hasRolled(true);
+    set_current(randomFromArray(pool));
+    set_rolled(true);
   };
 
-  const ancestry = {
+  const output = {
     current: {
-      get: selectedAncestry,
-      set: set_selectedAncestry,
+      get: get_current,
+      set: set_current,
     },
     mode: {
-      get: ancestryMode,
-      set: set_ancestryMode,
+      get: get_mode,
+      set: set_mode,
     },
     rolled: {
-      get: hasRolled,
-      set: set_hasRolled,
+      get: get_rolled,
+      set: set_rolled,
     },
-    roll: rollAncestry,
+    locked: {
+      get: get_locked,
+      set: set_locked,
+    },
+    roll: rollTrigger,
   };
-  return ancestry;
+  return output;
 };

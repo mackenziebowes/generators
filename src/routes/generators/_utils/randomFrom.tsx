@@ -2,9 +2,9 @@ export const randomIndex = (length: number) => {
   return Math.floor(Math.random() * length);
 };
 
-export const randomFromArray = (input: any[]) => {
+export function randomFromArray<T>(input: T[]): T {
   return input[randomIndex(input.length)];
-};
+}
 
 export const randomIntFromRange = (min: number, max: number) => {
   min = Math.ceil(min);
@@ -12,7 +12,7 @@ export const randomIntFromRange = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
-export const uniqueFromRandom = (input: any[], count: number) => {
+export function uniqueFromRandom<T>(input: T[], count: number): T[] {
   let intCount = Math.floor(count);
   if (intCount <= 0) return [];
   let bag = [...input];
@@ -25,4 +25,4 @@ export const uniqueFromRandom = (input: any[], count: number) => {
     counter++;
   }
   return output;
-};
+}

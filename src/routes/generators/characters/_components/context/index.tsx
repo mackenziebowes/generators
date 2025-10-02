@@ -8,6 +8,7 @@ import {
   onMount,
 } from "solid-js";
 import { prepAncestryTools, Ancestry } from "./ancestry";
+import { prepAttributeTools, Attributes } from "./attribute";
 
 export interface Signal<T> {
   get: Accessor<T>;
@@ -16,6 +17,7 @@ export interface Signal<T> {
 
 interface CharacterValue {
   ancestry: Ancestry;
+  attributes: Attributes;
 }
 
 export const CharacterContext = createContext<CharacterValue>();
@@ -24,13 +26,14 @@ interface ProviderProps extends JSX.HTMLAttributes<HTMLDivElement> {}
 
 export const CharacterProvider = (props: ProviderProps) => {
   const ancestry = prepAncestryTools();
-
+  const attributes = prepAttributeTools();
   onMount(() => {
     ancestry.roll();
+    attributes.roll();
   });
 
   return (
-    <CharacterContext.Provider value={{ ancestry }}>
+    <CharacterContext.Provider value={{ ancestry, attributes }}>
       {props.children}
     </CharacterContext.Provider>
   );
