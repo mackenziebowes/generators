@@ -8,30 +8,27 @@ import {
   onMount,
 } from "solid-js";
 import { Stack, Button, Card, Heading } from "~/devano/atoms";
-import { randomFromArray } from "../../_utils";
 import { GenerationCard } from "../../_components/GenerationCard";
+import { useCharacter } from "./context";
 
 export default function RollGender() {
-  const [selectedGender, set_selectedGender] = createSignal<string>("");
-
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
-
-  const rollGender = () => {
-    set_hasRolled(false);
-    set_selectedGender(randomFromArray(["Male", "Female"]));
-    if (Math.random() > 0.99) {
-      set_selectedGender("Agender");
-    }
-    set_hasRolled(true);
-  };
-
-  onMount(rollGender);
-
+  const { current, rolled, roll, locked } = useCharacter().gender;
   return (
-    <GenerationCard title="Gender" trigger={rollGender}>
+    <GenerationCard
+      title="Gender"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          This generator includes Agender and Intergender options at 10x the
+          rate of census data, approximately 1%. Feel free to modify this value
+          while transcribing.
+        </p>
+      }
+    >
       <Switch>
-        <Match when={hasRolled()}>
-          <GenderDisplay gender={selectedGender()} />
+        <Match when={rolled.get()}>
+          <GenderDisplay gender={current.get()} />
         </Match>
       </Switch>
     </GenerationCard>

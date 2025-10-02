@@ -9,66 +9,44 @@ import {
   For,
 } from "solid-js";
 import { Stack, Button, Card, Heading } from "~/devano/atoms";
-import { breakpoints, randomFromArray } from "../../_utils";
+import { randomFromArray } from "../../_utils";
+import { breakpoints } from "~/routes/_utils/responsive";
 import { GenerationCard } from "../../_components/GenerationCard";
 import {
-  KleshaProfileOptions,
+  KleshaTypeSelection,
   KleshaProfile,
   SimpleProfile,
   Profile,
-  generateKleshaProfile,
-  generateFullKleshaProfile,
-  generateSimpleKleshaProfila,
 } from "~/routes/generators/characters/_data/kleshas";
 import type { Pattern } from "../../_utils/ayurvedic";
 import { ExclusiveButton } from "~/devano/components";
 import { createBreakpoints } from "@solid-primitives/media";
+import { useCharacter } from "./context";
 
 export default function RollKlesha() {
-  const [selectedKlesha, set_selectedKlesha] = createSignal<KleshaProfile>(
-    generateSimpleKleshaProfila(),
-  );
-  const [selectedFullKlesha, set_selectedFullKlesha] = createSignal<Profile>(
-    generateFullKleshaProfile(),
-  );
-  const [selectedKleshaType, set_selectedKleshaType] =
-    createSignal<KleshaProfileOptions>("simple");
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
-
-  const rollKlesha = () => {
-    set_hasRolled(false);
-    switch (selectedKleshaType()) {
-      case "simple":
-        set_selectedKlesha(generateSimpleKleshaProfila());
-        break;
-      case "full":
-        set_selectedFullKlesha(generateFullKleshaProfile());
-        break;
-    }
-    set_hasRolled(true);
-  };
-
-  onMount(rollKlesha);
-
+  const { current, mode, locked, rolled, roll } = useCharacter().klesha;
   return (
-    <GenerationCard title="Flaws" trigger={rollKlesha}>
-      <p>
-        These Flaws help describe this character's natural responses to
-        conflict, tension, and decision making. Reference these when writing
-        Actions for this character.
-      </p>
+    <GenerationCard
+      title="Flaws"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          These Flaws help describe this character's natural responses to
+          conflict, tension, and decision making. Reference these when writing
+          Actions for this character.
+        </p>
+      }
+    >
       <Switch>
-        <Match when={hasRolled() && selectedKleshaType() == "simple"}>
-          <SimpleKleshaDisplay klesha={selectedKlesha()} />
+        <Match when={rolled.get() && mode.get() == "Simple"}>
+          <SimpleKleshaDisplay klesha={current.get()} />
         </Match>
-        <Match when={hasRolled() && selectedKleshaType() == "full"}>
-          <FullKleshaDisplay klesha={selectedFullKlesha()} />
+        <Match when={rolled.get() && mode.get() == "Full"}>
+          <FullKleshaDisplay klesha={current.get() as Profile} />
         </Match>
       </Switch>
-      <KleshaSourceSelector
-        get={selectedKleshaType}
-        set={set_selectedKleshaType}
-      />
+      <KleshaSourceSelector get={mode.get} set={mode.set} />
     </GenerationCard>
   );
 }
@@ -232,21 +210,21 @@ const FullKleshaDisplay = ({ klesha }: { klesha: Profile }) => {
 };
 
 interface KleshaSelector extends JSX.HTMLAttributes<HTMLDivElement> {
-  get: Accessor<KleshaProfileOptions>;
-  set: Setter<KleshaProfileOptions>;
+  get: Accessor<KleshaTypeSelection>;
+  set: Setter<KleshaTypeSelection>;
 }
 
 const KleshaSourceSelector = (props: KleshaSelector) => {
   return (
     <Stack class="w-full flex-wrap">
       <ExclusiveButton
-        condition={props.get() == "simple"}
-        trigger={() => props.set("simple")}
+        condition={props.get() == "Simple"}
+        trigger={() => props.set("Simple")}
         label="Simple"
       />
       <ExclusiveButton
-        condition={props.get() == "full"}
-        trigger={() => props.set("full")}
+        condition={props.get() == "Full"}
+        trigger={() => props.set("Full")}
         label="Full"
       />
     </Stack>

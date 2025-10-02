@@ -1,3 +1,4 @@
+import { randomFromArray } from "../../_utils";
 const directions = ["North", "East", "South", "West"];
 const distances = ["The", "The Near", "The Mid", "The Far"];
 
@@ -8,4 +9,8 @@ export const origins = () => {
     });
   });
   return nested.flat();
+};
+
+export const rollOrigin = () => {
+  return randomFromArray(origins());
 };

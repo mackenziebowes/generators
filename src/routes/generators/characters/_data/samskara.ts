@@ -96,12 +96,12 @@ const truthWounds = () => {
 };
 
 export type SamskaraCategoryOption =
-  | "trust"
-  | "ability"
-  | "safety"
-  | "identity"
-  | "truth"
-  | "any";
+  | "Trust"
+  | "Ability"
+  | "Safety"
+  | "Identity"
+  | "Truth"
+  | "Any";
 
 const getTrustWound = () => {
   return randomFromArray(trustWounds());
@@ -123,19 +123,19 @@ const getTruthWound = () => {
   return randomFromArray(truthWounds());
 };
 
-export const getWound = (type: SamskaraCategoryOption) => {
+export const getWound = (type: SamskaraCategoryOption): Pattern => {
   switch (type) {
-    case "trust":
+    case "Trust":
       return getTrustWound();
-    case "ability":
+    case "Ability":
       return getAbilityWound();
-    case "safety":
+    case "Safety":
       return getSafetyWound();
-    case "identity":
+    case "Identity":
       return getIdentityWound();
-    case "truth":
+    case "Truth":
       return getTruthWound();
-    case "any":
+    case "Any":
       return randomFromArray(
         [
           trustWounds(),

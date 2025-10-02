@@ -1,3 +1,5 @@
+import { randomFromArray } from "../../_utils";
+
 export const W_Urban_Backgrounds = [
   "Gambler",
   "Failed Merchant",
@@ -98,4 +100,29 @@ export const W_Noble_Backgrounds = [
   "Exiled Baron",
   "Exiled Baron's Family",
   "Baron's Bastard",
+  "Titled Knight",
+  "Titled Knight's Family",
+  "Titled Knight's Bastard",
 ];
+
+export type BackgroundTypeOptions =
+  | "Urban"
+  | "Traveller"
+  | "Outpost"
+  | "Solitary"
+  | "Noble";
+
+export const getBackground = (type: BackgroundTypeOptions) => {
+  switch (type) {
+    case "Urban":
+      return randomFromArray(W_Urban_Backgrounds);
+    case "Outpost":
+      return randomFromArray(W_Outpost_Backgrounds);
+    case "Solitary":
+      return randomFromArray(W_Solitary_Backgrounds);
+    case "Traveller":
+      return randomFromArray(W_Traveller_Backgrounds);
+    case "Noble":
+      return randomFromArray(W_Noble_Backgrounds);
+  }
+};

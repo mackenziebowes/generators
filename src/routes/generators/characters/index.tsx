@@ -1,8 +1,8 @@
-import { Button, Heading, Page, Stack } from "~/devano/atoms";
+import { Button, Card, Heading, Page, Stack } from "~/devano/atoms";
 import type { Component } from "solid-js";
 import { createEffect, Switch, Match } from "solid-js";
 import { createBreakpoints } from "@solid-primitives/media";
-import { breakpoints } from "../_utils";
+import { breakpoints } from "~/routes/_utils/responsive";
 import RollAttributes from "./_components/roll_attributes";
 import RollAncestry from "./_components/roll_ancestry";
 import RollGender from "./_components/roll_gender";
@@ -13,6 +13,7 @@ import RollSamskara from "./_components/roll_samskara";
 import RollKlesha from "./_components/roll_klesha";
 import RollDharma from "./_components/roll_dharma";
 import { CharacterProvider } from "./_components/context";
+import { useCharacter } from "./_components/context";
 
 export default function Home() {
   return (
@@ -22,9 +23,6 @@ export default function Home() {
         class="justify-start h-[100%] flex-grow gap-12 p-[48px] w-full"
       >
         <Heading as="h1">Roll A Character</Heading>
-        <div class="flex flex-row gap-[12px] w-full">
-          <Button outline>Roll Everything</Button>
-        </div>
         <CharacterProvider>
           <Bento />
         </CharacterProvider>
@@ -99,12 +97,16 @@ const XLLayout = () => {
         <RollBackground />
       </div>
       <div class="grid grid-cols-3 grid-rows-1 gap-[12px]">
-        <RollAttributes />
-        <RollMagic />
+        <div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
+          <RollAttributes />
+        </div>
         <div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
           <RollSamskara />
           <RollKlesha />
           <RollDharma />
+        </div>
+        <div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
+          <RollMagic />
         </div>
       </div>
     </div>
@@ -113,9 +115,18 @@ const XLLayout = () => {
 
 const Bento: Component = () => {
   const matches = createBreakpoints(breakpoints);
-
+  console.dir({ matches });
+  const character = useCharacter();
   return (
-    <>
+    <div class="grid grid-cols-1 w-full h-full">
+      <div class="flex flex-row gap-[12px] w-full">
+        <Button outline onclick={() => character.rollEverything()}>
+          Roll Everything
+        </Button>
+        <Button outline onclick={() => character.lockEverything()}>
+          Lock Everything
+        </Button>
+      </div>
       <Switch fallback={<MobileLayout />}>
         <Match when={matches.xl}>
           <XLLayout />
@@ -127,6 +138,6 @@ const Bento: Component = () => {
           <MediumLayout />
         </Match>
       </Switch>
-    </>
+    </div>
   );
 };

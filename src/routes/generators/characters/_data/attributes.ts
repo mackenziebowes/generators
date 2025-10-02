@@ -1,4 +1,7 @@
-import { uniqueFromRandom } from "~/routes/generators/_utils/randomFrom";
+import {
+  uniqueFromRandom,
+  pullItemsFromBag,
+} from "~/routes/generators/_utils/randomFrom";
 
 export const W_basic_six = [
   {
@@ -182,18 +185,6 @@ export type AttributeWithBuff = BaseAttribute & {
 };
 
 export type HeritageOptions = "West" | "East" | "Simple J-ARPG" | "J-ARPG";
-
-export function pullItemsFromBag<T>(source: T[], count: number) {
-  let bag = [...source];
-  let selected = [];
-  for (const _ in Array.from({ length: 4 })) {
-    let selectedIndex = Math.floor(Math.random() * bag.length);
-    let selectedItem = bag[selectedIndex];
-    selected.push(selectedItem);
-    bag.splice(selectedIndex, 1);
-  }
-  return [...selected, ...bag];
-}
 
 export function assignBuffs(
   set: BaseAttribute[],

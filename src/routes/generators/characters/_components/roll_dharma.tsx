@@ -17,39 +17,32 @@ import {
   getDharmas,
 } from "~/routes/generators/characters/_data/dharma";
 import { Pattern } from "../../_utils/ayurvedic";
-import { breakpoints } from "../../_utils";
+import { breakpoints } from "~/routes/_utils/responsive";
 import { createBreakpoints } from "@solid-primitives/media";
-
+import { useCharacter } from "./context";
 export default function RollDharma() {
-  const [selectedDharma, set_selectedDharma] = createSignal<DharmicConflict>(
-    getDharmas("metropolitan"),
-  );
-  const [dharmaMode, set_dharmaMode] =
-    createSignal<DharmicProfile>("metropolitan");
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
-
-  const rollDharma = () => {
-    set_hasRolled(false);
-    set_selectedDharma(getDharmas(dharmaMode()));
-    set_hasRolled(true);
-  };
-
-  onMount(rollDharma);
+  const { current, mode, rolled, locked, roll } = useCharacter().dharma;
 
   return (
-    <GenerationCard title="Duties in Conflict" trigger={rollDharma}>
-      <p>
-        This tab describes the central conflict of this character. Frontier
-        types are simply overwhelmed, their environment is asking for many
-        things and they struggle to meet the demands - both duties are external
-        despite the label.
-      </p>
+    <GenerationCard
+      title="Duties in Conflict"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          This tab describes the central conflict of this character. Frontier
+          types are simply overwhelmed, their environment is asking for many
+          things and they struggle to meet the demands - both duties are
+          external despite the label.
+        </p>
+      }
+    >
       <Switch>
-        <Match when={hasRolled()}>
-          <DharmaDisplay dharma={selectedDharma()} />
+        <Match when={rolled.get()}>
+          <DharmaDisplay dharma={current.get()} />
         </Match>
       </Switch>
-      <DharmaSourceSelector get={dharmaMode} set={set_dharmaMode} />
+      <DharmaSourceSelector get={mode.get} set={mode.set} />
     </GenerationCard>
   );
 }

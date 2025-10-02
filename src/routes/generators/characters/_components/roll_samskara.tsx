@@ -16,37 +16,27 @@ import {
 } from "~/routes/generators/characters/_data/samskara";
 import type { Pattern } from "../../_utils/ayurvedic";
 import { ExclusiveButton } from "~/devano/components";
-
+import { useCharacter } from "./context";
 export default function RollSamskara() {
-  const [selectedSamskara, set_selectedSamskara] = createSignal<Pattern>(
-    getWound("any"),
-  );
-  const [selectedSamskaraType, set_selectedSamskaraType] =
-    createSignal<SamskaraCategoryOption>("any");
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
-
-  const rollSamskara = () => {
-    set_hasRolled(false);
-    set_selectedSamskara(getWound(selectedSamskaraType()));
-    set_hasRolled(true);
-  };
-
-  onMount(rollSamskara);
+  const { current, mode, locked, rolled, roll } = useCharacter().samskara;
 
   return (
-    <GenerationCard title="Core Wound" trigger={rollSamskara}>
-      <p>
-        The Core Wound is an event that caused the Flaws in the next panel to
-        occur - this character tried to protect themself from experiencing this
-        wound again <em>by adopting</em> the Flaws.
-      </p>
+    <GenerationCard
+      title="Core Wound"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          The Core Wound is an event that caused the Flaws in the next panel to
+          occur - this character tried to protect themself from experiencing
+          this wound again <em>by adopting</em> the Flaws.
+        </p>
+      }
+    >
       <Switch>
-        <Match when={hasRolled()}>
-          <SamskaraDisplay samskara={selectedSamskara()} />
-          <SamskaraSourceSelector
-            get={selectedSamskaraType}
-            set={set_selectedSamskaraType}
-          />
+        <Match when={rolled.get()}>
+          <SamskaraDisplay samskara={current.get()} />
+          <SamskaraSourceSelector get={mode.get} set={mode.set} />
         </Match>
       </Switch>
     </GenerationCard>
@@ -76,33 +66,33 @@ const SamskaraSourceSelector = (props: SamskaraSelector) => {
   return (
     <Stack class="w-full flex-wrap">
       <ExclusiveButton
-        condition={props.get() == "trust"}
-        trigger={() => props.set("trust")}
+        condition={props.get() == "Trust"}
+        trigger={() => props.set("Trust")}
         label="Trust"
       />
       <ExclusiveButton
-        condition={props.get() == "ability"}
-        trigger={() => props.set("ability")}
+        condition={props.get() == "Ability"}
+        trigger={() => props.set("Ability")}
         label="Ability"
       />
       <ExclusiveButton
-        condition={props.get() == "safety"}
-        trigger={() => props.set("safety")}
+        condition={props.get() == "Safety"}
+        trigger={() => props.set("Safety")}
         label="Safety"
       />
       <ExclusiveButton
-        condition={props.get() == "identity"}
-        trigger={() => props.set("identity")}
+        condition={props.get() == "Identity"}
+        trigger={() => props.set("Identity")}
         label="Identity"
       />
       <ExclusiveButton
-        condition={props.get() == "truth"}
-        trigger={() => props.set("truth")}
+        condition={props.get() == "Truth"}
+        trigger={() => props.set("Truth")}
         label="Truth"
       />
       <ExclusiveButton
-        condition={props.get() == "any"}
-        trigger={() => props.set("any")}
+        condition={props.get() == "Any"}
+        trigger={() => props.set("Any")}
         label="Any"
       />
     </Stack>

@@ -6,15 +6,20 @@ import { GenerationCard } from "../../_components/GenerationCard";
 import { useCharacter } from "./context";
 
 export default function RollAncestry() {
-  const { ancestry } = useCharacter();
-  const { current, mode, rolled, roll } = ancestry;
+  const { current, mode, locked, rolled, roll } = useCharacter().ancestry;
 
   return (
-    <GenerationCard title="Ancestry" trigger={roll}>
-      <p>
-        This tab describes what type of creature this character is - The
-        "Half-*" from the extended tab and all Beastman are half-human.
-      </p>
+    <GenerationCard
+      title="Ancestry"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          This tab describes what type of creature this character is - The
+          "Half-*" from the extended tab and all Beastmen are half-human.
+        </p>
+      }
+    >
       <Switch>
         <Match when={rolled.get()}>
           <AncestryDisplay ancestry={current.get()} />

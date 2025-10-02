@@ -11,6 +11,7 @@ import type { Signal } from ".";
 export interface Ancestry {
   current: Signal<string>;
   mode: Signal<AncestrySetSelection>;
+  locked: Signal<boolean>;
   rolled: Signal<boolean>;
   roll: () => void;
 }

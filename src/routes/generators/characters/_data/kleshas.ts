@@ -59,6 +59,8 @@ export interface Profile {
   latent: Pattern[];
 }
 
+export type KleshaTypeSelection = "Simple" | "Full";
+
 export type KleshaProfile = SimpleProfile | Profile;
 
 export const generateSimpleKleshaProfila = () => {
@@ -78,13 +80,11 @@ export const generateFullKleshaProfile = () => {
   };
 };
 
-export type KleshaProfileOptions = "simple" | "full";
-
-export const generateKleshaProfile = (type: KleshaProfileOptions) => {
+export const generateKleshaProfile = (type: KleshaTypeSelection) => {
   switch (type) {
-    case "simple":
+    case "Simple":
       return generateSimpleKleshaProfila();
-    case "full":
+    case "Full":
       return generateFullKleshaProfile();
   }
 };

@@ -10,64 +10,31 @@ import {
 } from "solid-js";
 import { Stack, Button, Card, Heading } from "~/devano/atoms";
 import { ExclusiveButton } from "~/devano/components";
-import {
-  W_Urban_Backgrounds,
-  W_Outpost_Backgrounds,
-  W_Solitary_Backgrounds,
-  W_Traveller_Backgrounds,
-  W_Noble_Backgrounds,
-} from "../_data/backgrounds";
-import { randomFromArray } from "../../_utils";
+import { useCharacter } from "./context";
+import type { BackgroundTypeOptions } from "../_data/backgrounds";
 import { GenerationCard } from "../../_components/GenerationCard";
 
-type BackgroundSetSelection =
-  | "Urban"
-  | "Traveller"
-  | "Outpost"
-  | "Solitary"
-  | "Noble";
-
 export default function RollBackground() {
-  const [selectedBackground, set_selectedBackground] = createSignal<string>("");
-  const [backgroundMode, set_backgroundMode] =
-    createSignal<BackgroundSetSelection>("Urban");
-  const [hasRolled, set_hasRolled] = createSignal<boolean>(false);
-  const getBackgroundPool = () => {
-    switch (backgroundMode()) {
-      case "Urban":
-        return W_Urban_Backgrounds;
-      case "Traveller":
-        return W_Traveller_Backgrounds;
-      case "Outpost":
-        return W_Outpost_Backgrounds;
-      case "Solitary":
-        return W_Solitary_Backgrounds;
-      case "Noble":
-        return W_Noble_Backgrounds;
-    }
-  };
-
-  const rollBackground = () => {
-    set_hasRolled(false);
-    const pool = getBackgroundPool();
-    set_selectedBackground(randomFromArray(pool));
-    set_hasRolled(true);
-  };
-
-  onMount(rollBackground);
+  const { current, rolled, locked, roll, mode } = useCharacter().background;
 
   return (
-    <GenerationCard title="Background" trigger={rollBackground}>
-      <p>
-        This tab describes what this character is doing <strong>now</strong> -
-        before the inciting incident.
-      </p>
+    <GenerationCard
+      title="Background"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          This tab describes what this character is doing <strong>now</strong> -
+          before the inciting incident.
+        </p>
+      }
+    >
       <Switch>
-        <Match when={hasRolled()}>
-          <BackgroundDisplay background={selectedBackground()} />
+        <Match when={rolled.get()}>
+          <BackgroundDisplay background={current.get()} />
         </Match>
       </Switch>
-      <BackgroundSourceSelector get={backgroundMode} set={set_backgroundMode} />
+      <BackgroundSourceSelector get={mode.get} set={mode.set} />
     </GenerationCard>
   );
 }
@@ -84,8 +51,8 @@ const BackgroundDisplay = ({ background }: { background: string }) => {
 };
 
 interface BackgroundSelector extends JSX.HTMLAttributes<HTMLDivElement> {
-  get: Accessor<BackgroundSetSelection>;
-  set: Setter<BackgroundSetSelection>;
+  get: Accessor<BackgroundTypeOptions>;
+  set: Setter<BackgroundTypeOptions>;
 }
 
 const BackgroundSourceSelector = (props: BackgroundSelector) => {

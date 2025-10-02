@@ -7,17 +7,36 @@ import {
   Setter,
   onMount,
 } from "solid-js";
-import { prepAncestryTools, Ancestry } from "./ancestry";
-import { prepAttributeTools, Attributes } from "./attribute";
+import { prepAncestryTools, Ancestry } from "./ancestry-context";
+import { prepAttributeTools, Attributes } from "./attribute-context";
+import { prepMagicTools, Magic } from "./magic-context";
+import { prepGenderTools, Gender } from "./gender-context";
+import { prepBackgroundTools, Background } from "./background-context";
+import { prepOriginTools, Origin } from "./origin-context";
+import { prepKleshaTools, Klesha } from "./klesha-context";
+import { prepSamskaraTools, Samskara } from "./samskara-context";
+import { prepDharmaTools, Dharma } from "./dharma-context";
 
 export interface Signal<T> {
   get: Accessor<T>;
   set: Setter<T>;
 }
 
-interface CharacterValue {
+interface ToolBag {
   ancestry: Ancestry;
   attributes: Attributes;
+  magic: Magic;
+  gender: Gender;
+  background: Background;
+  origin: Origin;
+  klesha: Klesha;
+  samskara: Samskara;
+  dharma: Dharma;
+}
+
+interface CharacterValue extends ToolBag {
+  rollEverything: () => void;
+  lockEverything: () => void;
 }
 
 export const CharacterContext = createContext<CharacterValue>();
@@ -25,15 +44,39 @@ export const CharacterContext = createContext<CharacterValue>();
 interface ProviderProps extends JSX.HTMLAttributes<HTMLDivElement> {}
 
 export const CharacterProvider = (props: ProviderProps) => {
-  const ancestry = prepAncestryTools();
-  const attributes = prepAttributeTools();
-  onMount(() => {
-    ancestry.roll();
-    attributes.roll();
-  });
+  let tools: ToolBag = {
+    ancestry: prepAncestryTools(),
+    attributes: prepAttributeTools(),
+    magic: prepMagicTools(),
+    gender: prepGenderTools(),
+    background: prepBackgroundTools(),
+    origin: prepOriginTools(),
+    klesha: prepKleshaTools(),
+    samskara: prepSamskaraTools(),
+    dharma: prepDharmaTools(),
+  };
+
+  const rollEverything = () => {
+    for (const item of Object.values(tools)) {
+      item.roll();
+    }
+  };
+  const lockEverything = () => {
+    for (const item of Object.values(tools)) {
+      item.locked.set(true);
+    }
+  };
+
+  const output = {
+    ...tools,
+    rollEverything,
+    lockEverything,
+  };
+
+  onMount(rollEverything);
 
   return (
-    <CharacterContext.Provider value={{ ancestry, attributes }}>
+    <CharacterContext.Provider value={output}>
       {props.children}
     </CharacterContext.Provider>
   );

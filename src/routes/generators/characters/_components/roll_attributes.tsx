@@ -13,16 +13,22 @@ import { ExclusiveButton } from "~/devano/components";
 import { MultiplierBadge } from "~/routes/generators/_components/MultiplierBadge";
 import { GenerationCard } from "../../_components/GenerationCard";
 import { useCharacter } from "./context";
-import type { AttributeWithBuff } from "../_data/attributes";
+import type { AttributeWithBuff, HeritageOptions } from "../_data/attributes";
 
 export default function RollAttributes() {
-  const { attributes } = useCharacter();
-  const { current, mode, rolled, locked, roll } = attributes;
+  const { current, mode, rolled, locked, roll } = useCharacter().attributes;
   return (
-    <GenerationCard title="Attributes" trigger={roll}>
-      <p>
-        The growth aptitudes of this character - loosely intimates classes/jobs.
-      </p>
+    <GenerationCard
+      title="Attributes"
+      trigger={roll}
+      locked={locked}
+      description={
+        <p>
+          The growth aptitudes of this character - loosely intimates
+          classes/jobs.
+        </p>
+      }
+    >
       <AttributeSourceSelect get={mode.get} set={mode.set} />
       <Switch>
         <Match when={rolled.get()}>
@@ -46,7 +52,7 @@ const AttributeDisplay = (props: AttributeDisplayArgs) => {
     >
       <For each={attrMemo()}>
         {(item) => (
-          <div class="flex flex-col w-full max-w-[40ch] self-start">
+          <div class="flex flex-col w-full self-start">
             <Heading
               as="h3"
               class="text-2xl sm:text-2xl md:text-2xl lg:text-2xl font-bold"
