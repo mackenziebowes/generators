@@ -139,7 +139,7 @@ const DisplayHardDetails = (props: DisplayMagicDetailsArgs) => {
   );
 };
 
-const DisplayMagicDetails = (props: DisplayMagicDetailsArgs) => {
+export const DisplayMagicDetails = (props: DisplayMagicDetailsArgs) => {
   const magicMemo = () => props.attributes();
   return (
     <Switch>

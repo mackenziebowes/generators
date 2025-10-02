@@ -43,7 +43,7 @@ interface AttributeDisplayArgs extends JSX.HTMLAttributes<HTMLDivElement> {
   attributes: Accessor<AttributeWithBuff[]>;
 }
 
-const AttributeDisplay = (props: AttributeDisplayArgs) => {
+export const AttributeDisplay = (props: AttributeDisplayArgs) => {
   const attrMemo = () => props.attributes();
   return (
     <Stack

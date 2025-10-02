@@ -34,7 +34,7 @@ interface ToolBag {
   dharma: Dharma;
 }
 
-interface CharacterValue extends ToolBag {
+export interface CharacterValue extends ToolBag {
   rollEverything: () => void;
   lockEverything: () => void;
 }

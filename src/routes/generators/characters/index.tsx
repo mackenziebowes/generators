@@ -14,6 +14,8 @@ import RollKlesha from "./_components/roll_klesha";
 import RollDharma from "./_components/roll_dharma";
 import { CharacterProvider } from "./_components/context";
 import { useCharacter } from "./_components/context";
+import { generateCharacterText } from "./_components/export";
+import { copyToClipboard } from "../_utils";
 
 export default function Home() {
   return (
@@ -117,6 +119,10 @@ const Bento: Component = () => {
   const matches = createBreakpoints(breakpoints);
   console.dir({ matches });
   const character = useCharacter();
+  const copyCharacter = (type: "plain" | "markdown" = "plain") => {
+    const text = generateCharacterText(character, type);
+    copyToClipboard(text);
+  };
   return (
     <div class="grid grid-cols-1 w-full h-full">
       <div class="flex flex-row gap-[12px] w-full">
@@ -125,6 +131,12 @@ const Bento: Component = () => {
         </Button>
         <Button outline onclick={() => character.lockEverything()}>
           Lock Everything
+        </Button>
+        <Button outline onclick={() => copyCharacter()}>
+          Copy Text
+        </Button>
+        <Button outline onclick={() => copyCharacter("markdown")}>
+          Copy Markdown
         </Button>
       </div>
       <Switch fallback={<MobileLayout />}>
