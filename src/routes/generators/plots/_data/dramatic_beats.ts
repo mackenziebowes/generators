@@ -4,7 +4,7 @@ import { Valence, Stakes, ValenceOptions, StakesOptions } from "./shared_types";
 
 type TransformativeOperation = "Transform";
 type DevelopmentalOperation = "Develop";
-type Operation = TransformativeOperation | DevelopmentalOperation;
+export type Operation = TransformativeOperation | DevelopmentalOperation;
 type TransformativeNouns = "Trust" | "Bond" | "Loyalty" | "Respect";
 type DevelopmentalNouns =
   | "Understanding"
@@ -110,6 +110,6 @@ function GenerateDevelopmentalDramaticBeat(
 export const beats = {
   transform: (args: TransformativeDramaticBeatArgs) =>
     GenerateTransformativeBeat(args),
-  develop: (args: DevelopmentalDramaticBeat) =>
+  develop: (args: DevelopmentalDramaticBeatArgs) =>
     GenerateDevelopmentalDramaticBeat(args),
 };

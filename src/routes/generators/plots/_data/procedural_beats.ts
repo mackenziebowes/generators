@@ -104,6 +104,8 @@ function GenerateGainBeat(args: Partial<GainBeat>): GainBeat {
   };
 }
 
+export type ProceduralBeat = DiscoveryBeat | LossBeat | GainBeat;
+
 export const beats = {
   discovery: (args: Partial<DiscoveryBeat>) => GenerateDiscoveryBeat(args),
   gain: (args: Partial<GainBeat>) => GenerateGainBeat(args),
