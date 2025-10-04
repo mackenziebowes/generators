@@ -244,6 +244,7 @@ People also require, for flavour and breathers, Dramatic Beats. That uses a diff
 ### The Character Earns (val <= 0 -> val >= 0):
 
 - Trust
+- Bond
 - Loyalty
 - Respect
 
