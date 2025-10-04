@@ -235,7 +235,7 @@ Positive / Negative
 - A New Item
 - Status
 
-### Procedural and Dramtic Beats
+### Procedural and Dramatic Beats
 
 The above system composes something called Procedural Beats - shit actually happening in the world.
 
