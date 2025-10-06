@@ -50,7 +50,6 @@ export default function Home() {
         class="justify-start h-[100%] flex-grow gap-12 p-[48px] w-full"
       >
         <Heading as="h1">Roll A Plot</Heading>
-
         <div class="max-width-[80ch] flex flex-col gap-[24px]">
           <div class="w-full max-width-[80ch] flex justify-between">
             <Button onclick={addProcBeat}>Procedural</Button>

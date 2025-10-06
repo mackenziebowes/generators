@@ -18,6 +18,10 @@ const Nav: Component = () => {
         <Heading as="h3">Characters</Heading>
         <Anchor href="/generators/characters">Flawed Protagonist</Anchor>
       </div>
+      <div class="grid grid-cols-1 gap-[2rem]">
+        <Heading as="h3">Plot</Heading>
+        <Anchor href="/generators/plot">Plot Generator</Anchor>
+      </div>
     </div>
   );
 };
