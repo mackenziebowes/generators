@@ -17,134 +17,122 @@ import { generateCharacterText } from "../_components/export";
 import { copyToClipboard } from "../../_utils";
 
 export const RoundCharacter: Component = () => {
-	const matches = createBreakpoints(breakpoints);
-	console.dir({ matches });
-	const character = useCharacter();
-	const copyCharacter = (type: "plain" | "markdown" = "plain") => {
-		const text = generateCharacterText(character, type);
-		copyToClipboard(text);
-	};
-	return (
-		<div class="grid grid-cols-1 w-full h-full">
-			<div class="flex flex-row gap-[12px] w-full">
-				<Button
-					outline
-					onclick={() => character.rollEverything()}
-				>
-					Roll Everything
-				</Button>
-				<Button
-					outline
-					onclick={() => character.lockEverything()}
-				>
-					Lock Everything
-				</Button>
-				<Button
-					outline
-					onclick={() => copyCharacter()}
-				>
-					Copy Text
-				</Button>
-				<Button
-					outline
-					onclick={() => copyCharacter("markdown")}
-				>
-					Copy Markdown
-				</Button>
-			</div>
-			<Switch fallback={<MobileLayout />}>
-				<Match when={matches.xl}>
-					<XLLayout />
-				</Match>
-				<Match when={matches.lg}>
-					<LargeLayout />
-				</Match>
-				<Match when={matches.sm}>
-					<MediumLayout />
-				</Match>
-			</Switch>
-		</div>
-	);
+  const matches = createBreakpoints(breakpoints);
+  console.dir({ matches });
+  const character = useCharacter();
+  const copyCharacter = (type: "plain" | "markdown" = "plain") => {
+    const text = generateCharacterText(character, type);
+    copyToClipboard(text);
+  };
+  return (
+    <div class="grid grid-cols-1 w-full h-full">
+      <div class="flex flex-row gap-[12px] w-full max-w-full flex-wrap">
+        <Button outline onclick={() => character.rollEverything()}>
+          Roll Everything
+        </Button>
+        <Button outline onclick={() => character.lockEverything()}>
+          Lock Everything
+        </Button>
+        <Button outline onclick={() => copyCharacter()}>
+          Copy Text
+        </Button>
+        <Button outline onclick={() => copyCharacter("markdown")}>
+          Copy Markdown
+        </Button>
+      </div>
+      <Switch fallback={<MobileLayout />}>
+        <Match when={matches.xl}>
+          <XLLayout />
+        </Match>
+        <Match when={matches.lg}>
+          <LargeLayout />
+        </Match>
+        <Match when={matches.sm}>
+          <MediumLayout />
+        </Match>
+      </Switch>
+    </div>
+  );
 };
 
 const MobileLayout = () => {
-	return (
-		<div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
-			<RollGender />
-			<RollAncestry />
-			<RollBackground />
-			<RollOrigin />
-			<RollAttributes />
-			<RollMagic />
-			<RollSamskara />
-			<RollKlesha />
-			<RollDharma />
-		</div>
-	);
+  return (
+    <div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
+      <RollGender />
+      <RollAncestry />
+      <RollBackground />
+      <RollOrigin />
+      <RollAttributes />
+      <RollMagic />
+      <RollSamskara />
+      <RollKlesha />
+      <RollDharma />
+    </div>
+  );
 };
 
 const MediumLayout = () => {
-	return (
-		<div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
-			<div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
-				<RollGender />
-				<RollOrigin />
-				<RollAncestry />
-				<RollBackground />
-			</div>
-			<RollAttributes />
-			<RollMagic />
-			<RollSamskara />
-			<RollKlesha />
-			<RollDharma />
-		</div>
-	);
+  return (
+    <div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
+      <div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
+        <RollGender />
+        <RollOrigin />
+        <RollAncestry />
+        <RollBackground />
+      </div>
+      <RollAttributes />
+      <RollMagic />
+      <RollSamskara />
+      <RollKlesha />
+      <RollDharma />
+    </div>
+  );
 };
 
 const LargeLayout = () => {
-	return (
-		<div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
-			<div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
-				<RollGender />
-				<RollOrigin />
-				<RollAncestry />
-				<RollBackground />
-			</div>
-			<div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
-				<RollAttributes />
-				<RollMagic />
-			</div>
-			<div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
-				<RollSamskara />
-				<RollKlesha />
-			</div>
-			<RollDharma />
-		</div>
-	);
+  return (
+    <div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
+      <div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
+        <RollGender />
+        <RollOrigin />
+        <RollAncestry />
+        <RollBackground />
+      </div>
+      <div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
+        <RollAttributes />
+        <RollMagic />
+      </div>
+      <div class="grid grid-cols-2 grid-rows-1 gap-[12px]">
+        <RollSamskara />
+        <RollKlesha />
+      </div>
+      <RollDharma />
+    </div>
+  );
 };
 
 const XLLayout = () => {
-	return (
-		<div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
-			<div class="grid grid-cols-4 grid-rows-1 gap-[12px]">
-				<RollGender />
-				<RollOrigin />
-				<RollAncestry />
-				<RollBackground />
-			</div>
-			<div class="grid grid-cols-3 grid-rows-1 gap-[12px]">
-				<div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
-					<RollAttributes />
-				</div>
-				<div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
-					<RollSamskara />
-					<RollKlesha />
-					<RollDharma />
-				</div>
-				<div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
-					<RollMagic />
-				</div>
-			</div>
-		</div>
-	);
+  return (
+    <div class="flex flex-col gap-[12px] flex-grow w-full px-[12px] py-[24px]">
+      <div class="grid grid-cols-4 grid-rows-1 gap-[12px]">
+        <RollGender />
+        <RollOrigin />
+        <RollAncestry />
+        <RollBackground />
+      </div>
+      <div class="grid grid-cols-3 grid-rows-1 gap-[12px]">
+        <div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
+          <RollAttributes />
+        </div>
+        <div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
+          <RollSamskara />
+          <RollKlesha />
+          <RollDharma />
+        </div>
+        <div class="grid grid-cols-1 grid-rows-1 gap-[12px]">
+          <RollMagic />
+        </div>
+      </div>
+    </div>
+  );
 };

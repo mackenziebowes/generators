@@ -26,7 +26,7 @@ interface ExclusiveSelectionArgs<T> extends JSX.HTMLAttributes<HTMLDivElement> {
 
 const SelectTradition = (props: ExclusiveSelectionArgs<MagicAptitudeType>) => {
   return (
-    <Stack>
+    <Stack class="flex-wrap">
       <ExclusiveButton
         condition={props.get() == "Western"}
         trigger={() => props.set("Western")}

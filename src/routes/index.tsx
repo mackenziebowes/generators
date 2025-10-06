@@ -13,14 +13,14 @@ export default function Home() {
 
 const Nav: Component = () => {
   return (
-    <div class="grid grid-cols-3">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-[12px]">
       <div class="grid grid-cols-1 gap-[2rem]">
         <Heading as="h3">Characters</Heading>
         <Anchor href="/generators/characters">Flawed Protagonist</Anchor>
       </div>
       <div class="grid grid-cols-1 gap-[2rem]">
         <Heading as="h3">Plot</Heading>
-        <Anchor href="/generators/plot">Plot Generator</Anchor>
+        <Anchor href="/generators/plots">Plot Generator</Anchor>
       </div>
     </div>
   );

@@ -75,7 +75,7 @@ interface AttributeHeritageSelector extends JSX.HTMLAttributes<HTMLDivElement> {
 
 const AttributeSourceSelect = (props: AttributeHeritageSelector) => {
   return (
-    <Stack>
+    <Stack class="flex-wrap">
       <ExclusiveButton
         condition={props.get() == "West"}
         trigger={() => props.set("West")}
