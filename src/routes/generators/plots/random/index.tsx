@@ -3,11 +3,11 @@ import type { Component } from "solid-js";
 import { createEffect, Switch, Match, For, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 
-import { beats as proceduralBeats } from "./random/_data/procedural_beats";
-import { beats as dramaticBeats } from "./random/_data/dramatic_beats";
-import { DisplayProceduralBeat } from "./random/_components/proceduralBeatDisplay";
-import { dN } from "../_utils/dice";
-import { DisplayDramaticBeat } from "./random/_components/dramaticBeatDisplay";
+import { beats as proceduralBeats } from "./_data/procedural_beats";
+import { beats as dramaticBeats } from "./_data/dramatic_beats";
+import { DisplayProceduralBeat } from "./_components/proceduralBeatDisplay";
+import { dN } from "../../_utils/dice";
+import { DisplayDramaticBeat } from "./_components/dramaticBeatDisplay";
 
 export default function Home() {
   const [beats, set_beats] = createStore<any[]>([]);
@@ -49,7 +49,7 @@ export default function Home() {
         direction="col"
         class="justify-start h-[100%] flex-grow gap-12 p-[48px] w-full"
       >
-        <Heading as="h1">Roll A Plot</Heading>
+        <Heading as="h1">Purely Random Plots</Heading>
         <div class="max-width-[80ch] flex flex-col gap-[24px]">
           <div class="w-full max-width-[80ch] flex justify-between">
             <Button onclick={addProcBeat}>Procedural</Button>
