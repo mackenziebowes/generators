@@ -3,157 +3,161 @@ import type { DraftField } from "~/routes/planning-tools/_data/types";
 import { draftField } from "~/routes/planning-tools/_data/types";
 
 type LockedReactiveSceneParts = {
-  reaction: string;
-  dilemma: string;
-  decision: string;
+	reaction: string;
+	dilemma: string;
+	decision: string;
 };
 
 type LockedProactiveSceneParts = {
-  goal: string;
-  obstacle: string;
-  setback: string;
+	goal: string;
+	obstacle: string;
+	setback: string;
 };
 
 type LockedSceneParts = {
-  pov_character: string;
-  one_sentence_summary: string;
-  crucible: string;
+	pov_character: string;
+	one_sentence_summary: string;
+	crucible: string;
 };
 
 const lockedReactiveSceneParts = z.object({
-  reaction: z.string(),
-  dilemma: z.string(),
-  decision: z.string(),
+	reaction: z.string(),
+	dilemma: z.string(),
+	decision: z.string(),
 });
 
 const lockedProactiveSceneParts = z.object({
-  goal: z.string(),
-  obstacle: z.string(),
-  setback: z.string(),
+	goal: z.string(),
+	obstacle: z.string(),
+	setback: z.string(),
 });
 
 const lockedSceneParts = z.object({
-  pov_character: z.string(),
-  one_sentence_summary: z.string(),
-  crucible: z.string(),
+	pov_character: z.string(),
+	one_sentence_summary: z.string(),
+	crucible: z.string(),
 });
 
 export type LockedReactiveScene = LockedSceneParts & {
-  type: "REACTIVE";
+	type: "REACTIVE";
 } & LockedReactiveSceneParts;
 
 export const lockedReactiveScene = z.object({
-  ...lockedSceneParts.shape,
-  ...lockedReactiveSceneParts.shape,
-  type: z.literal("REACTIVE"),
+	...lockedSceneParts.shape,
+	...lockedReactiveSceneParts.shape,
+	type: z.literal("REACTIVE"),
 });
 
 export type LockedProactiveScene = LockedSceneParts & {
-  type: "PROACTIVE";
+	type: "PROACTIVE";
 } & LockedProactiveSceneParts;
 
 export const lockedProactiveScene = z.object({
-  ...lockedSceneParts.shape,
-  ...lockedProactiveSceneParts.shape,
-  type: z.literal("PROACTIVE"),
+	...lockedSceneParts.shape,
+	...lockedProactiveSceneParts.shape,
+	type: z.literal("PROACTIVE"),
 });
 
 export type LockedCombinationScene = LockedSceneParts & {
-  type: "BOTH";
+	type: "BOTH";
 } & LockedReactiveSceneParts &
-  LockedProactiveSceneParts;
+	LockedProactiveSceneParts;
 
 export const lockedCombinationScene = z.object({
-  ...lockedSceneParts.shape,
-  ...lockedProactiveSceneParts.shape,
-  ...lockedReactiveSceneParts.shape,
-  type: z.literal("BOTH"),
+	...lockedSceneParts.shape,
+	...lockedProactiveSceneParts.shape,
+	...lockedReactiveSceneParts.shape,
+	type: z.literal("BOTH"),
 });
 
 export type LockedScene =
-  | LockedReactiveScene
-  | LockedProactiveScene
-  | LockedCombinationScene;
+	| LockedReactiveScene
+	| LockedProactiveScene
+	| LockedCombinationScene;
 
 export const lockedScene = z.union([
-  lockedReactiveScene,
-  lockedProactiveScene,
-  lockedCombinationScene,
+	lockedReactiveScene,
+	lockedProactiveScene,
+	lockedCombinationScene,
 ]);
 
+export const lockedScenes = z.array(lockedScene);
+
 type DraftSceneParts = {
-  pov_character: DraftField<string>;
-  one_sentence_summary: DraftField<string>;
-  crucible: DraftField<string>;
+	pov_character: DraftField<string>;
+	one_sentence_summary: DraftField<string>;
+	crucible: DraftField<string>;
 };
 
 type DraftReactiveSceneParts = {
-  reaction: DraftField<string>;
-  dilemma: DraftField<string>;
-  decision: DraftField<string>;
+	reaction: DraftField<string>;
+	dilemma: DraftField<string>;
+	decision: DraftField<string>;
 };
 
 type DraftProactiveSceneParts = {
-  goal: DraftField<string>;
-  obstacle: DraftField<string>;
-  setback: DraftField<string>;
+	goal: DraftField<string>;
+	obstacle: DraftField<string>;
+	setback: DraftField<string>;
 };
 
 export const draftSceneParts = z.object({
-  pov_character: draftField(z.string()),
-  one_sentence_summary: draftField(z.string()),
-  crucible: draftField(z.string()),
+	pov_character: draftField(z.string()),
+	one_sentence_summary: draftField(z.string()),
+	crucible: draftField(z.string()),
 });
 
 export const draftReactiveSceneParts = z.object({
-  reaction: draftField(z.string()),
-  dilemma: draftField(z.string()),
-  decision: draftField(z.string()),
+	reaction: draftField(z.string()),
+	dilemma: draftField(z.string()),
+	decision: draftField(z.string()),
 });
 
 export const draftProactiveSceneParts = z.object({
-  goal: draftField(z.string()),
-  obstacle: draftField(z.string()),
-  setback: draftField(z.string()),
+	goal: draftField(z.string()),
+	obstacle: draftField(z.string()),
+	setback: draftField(z.string()),
 });
 
 export type DraftReactiveScene = DraftSceneParts & {
-  type: "REACTIVE";
+	type: "REACTIVE";
 } & DraftReactiveSceneParts;
 
 export const draftReactiveScene = z.object({
-  ...draftSceneParts.shape,
-  ...draftReactiveSceneParts.shape,
-  type: z.literal("REACTIVE"),
+	...draftSceneParts.shape,
+	...draftReactiveSceneParts.shape,
+	type: z.literal("REACTIVE"),
 });
 export const draftProactiveScene = z.object({
-  ...draftSceneParts.shape,
-  ...draftProactiveSceneParts.shape,
-  type: z.literal("PROACTIVE"),
+	...draftSceneParts.shape,
+	...draftProactiveSceneParts.shape,
+	type: z.literal("PROACTIVE"),
 });
 export const draftCombinationScene = z.object({
-  ...draftSceneParts.shape,
-  ...draftReactiveSceneParts.shape,
-  ...draftProactiveSceneParts.shape,
-  type: z.literal("BOTH"),
+	...draftSceneParts.shape,
+	...draftReactiveSceneParts.shape,
+	...draftProactiveSceneParts.shape,
+	type: z.literal("BOTH"),
 });
 
 export type DraftProactiveScene = DraftSceneParts & {
-  type: "PROACTIVE";
+	type: "PROACTIVE";
 } & DraftProactiveSceneParts;
 
 export type DraftCombinationScene = DraftSceneParts & {
-  type: "BOTH";
+	type: "BOTH";
 } & DraftReactiveSceneParts &
-  DraftProactiveSceneParts;
+	DraftProactiveSceneParts;
 
 export type DraftScene =
-  | DraftCombinationScene
-  | DraftProactiveScene
-  | DraftReactiveScene;
+	| DraftCombinationScene
+	| DraftProactiveScene
+	| DraftReactiveScene;
 
 export const draftScene = z.union([
-  draftReactiveScene,
-  draftProactiveScene,
-  draftCombinationScene,
+	draftReactiveScene,
+	draftProactiveScene,
+	draftCombinationScene,
 ]);
+
+export const draftScenes = z.array(draftScene);
